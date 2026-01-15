@@ -38,7 +38,7 @@ Ableton Live plugin for editing and playing SNES SPC music files. Written in C#.
 ## 📝 Editors & Utilities
 
 ### [DropEdit](https://github.com/TheAnsarya/DropEdit)
-DropEdit is editor for SNES RPGs and such. Written in CSS.
+DropEdit is an editor for SNES RPGs and such. Written in CSS.
 
 ### [logsmall](https://github.com/TheAnsarya/logsmall)
 Utility project written in C#.
@@ -52,10 +52,10 @@ Rom Manager made as an efficient alternative to RomVault. Written in C#.
 ## 🎯 Original Game Projects
 
 ### [SylvanTimes](https://github.com/TheAnsarya/SylvanTimes)
-SNES Game that is in the forests. Original game development project.
+SNES game that takes place in the forests. Original game development project (newer version).
 
 ### [sylvan-times](https://github.com/TheAnsarya/sylvan-times)
-Original SNES project. Written in Assembly.
+Original SNES project. Written in Assembly (legacy version).
 
 ### [rozzy-retro](https://github.com/TheAnsarya/rozzy-retro)
 Retro gaming project.
@@ -72,7 +72,7 @@ yts.ag torrent file downloader. Written in C#.
 Full version of YTS downloader utility. Written in C#.
 
 ### [smbc-downloader](https://github.com/TheAnsarya/smbc-downloader)
-Making a downloader for SMBC for explainsmbc.com. Written in C#.
+A downloader for SMBC (Saturday Morning Breakfast Cereal) comics for explainsmbc.com. Written in C#.
 
 ## 🧪 Experimental & Miscellaneous
 
