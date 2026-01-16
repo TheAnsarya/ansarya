@@ -1,492 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ansarya - Your comprehensive development companion for Visual Studio Code">
-    <meta name="keywords" content="ansarya, vscode, extension, developer tools, productivity">
-    <meta name="author" content="TheAnsarya">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://theansarya.github.io/ansarya/">
-    <meta property="og:title" content="Ansarya - VS Code Extension">
-    <meta property="og:description" content="Your comprehensive development companion for Visual Studio Code">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://theansarya.github.io/ansarya/">
-    <meta property="twitter:title" content="Ansarya - VS Code Extension">
-    <meta property="twitter:description" content="Your comprehensive development companion for Visual Studio Code">
-    
-    <title>Ansarya - Development Hub & Repository Central</title>
-    
-    <style>
-        :root {
-            --primary-color: #007acc;
-            --secondary-color: #68217a;
-            --text-color: #333;
-            --bg-color: #ffffff;
-            --card-bg: #f5f5f5;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary-color: #3794ff;
-                --secondary-color: #9d70b8;
-                --text-color: #e0e0e0;
-                --bg-color: #1e1e1e;
-                --card-bg: #2d2d2d;
-                --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            }
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            transition: background-color 0.3s ease;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            padding: 60px 0 40px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        h1 {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .tagline {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-bottom: 30px;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 122, 204, 0.3);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        main {
-            padding: 60px 0;
-        }
-        
-        .section {
-            margin-bottom: 60px;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .link-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text-color);
-            display: block;
-        }
-        
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        .link-card-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .link-card-description {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-        
-        .icon {
-            width: 30px;
-            height: 30px;
-            fill: var(--primary-color);
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .feature {
-            padding: 20px;
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .feature h3 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-        
-        footer {
-            background-color: var(--card-bg);
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 60px;
-            border-top: 2px solid var(--primary-color);
-        }
-        
-        footer p {
-            opacity: 0.8;
-        }
-        
-        footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        footer a:hover {
-            text-decoration: underline;
-        }
-        
-        .marketplace-badge {
-            display: inline-block;
-            margin: 20px 0;
-        }
-        
-        .marketplace-badge img {
-            height: 40px;
-            transition: transform 0.2s ease;
-        }
-        
-        .marketplace-badge:hover img {
-            transform: scale(1.05);
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .tagline {
-                font-size: 1.1rem;
-            }
-            
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Ansarya - Your comprehensive development companion for Visual Studio Code">
+	<meta name="keywords" content="ansarya, vscode, extension, developer tools, productivity">
+	<meta name="author" content="TheAnsarya">
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://theansarya.github.io/ansarya/">
+	<meta property="og:title" content="Ansarya - VS Code Extension">
+	<meta property="og:description" content="Your comprehensive development companion for Visual Studio Code">
+	
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://theansarya.github.io/ansarya/">
+	<meta property="twitter:title" content="Ansarya - VS Code Extension">
+	<meta property="twitter:description" content="Your comprehensive development companion for Visual Studio Code">
+	
+	<title>Ansarya - Development Hub & Repository Central</title>
+	
+	<style>
+		:root {
+			--primary-color: #007acc;
+			--secondary-color: #68217a;
+			--text-color: #333;
+			--bg-color: #ffffff;
+			--card-bg: #f5f5f5;
+			--shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			--border-radius: 8px;
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--primary-color: #3794ff;
+				--secondary-color: #9d70b8;
+				--text-color: #e0e0e0;
+				--bg-color: #1e1e1e;
+				--card-bg: #2d2d2d;
+				--shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+			}
+		}
+		
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			line-height: 1.6;
+			color: var(--text-color);
+			background-color: var(--bg-color);
+			transition: background-color 0.3s ease;
+		}
+		
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+		
+		header {
+			padding: 60px 0 40px;
+			text-align: center;
+			border-bottom: 2px solid var(--primary-color);
+		}
+		
+		h1 {
+			font-size: 3rem;
+			color: var(--primary-color);
+			margin-bottom: 10px;
+			font-weight: 700;
+		}
+		
+		.tagline {
+			font-size: 1.3rem;
+			color: var(--secondary-color);
+			margin-bottom: 20px;
+		}
+		
+		.subtitle {
+			font-size: 1rem;
+			opacity: 0.8;
+			margin-bottom: 30px;
+		}
+		
+		.cta-buttons {
+			display: flex;
+			gap: 20px;
+			justify-content: center;
+			flex-wrap: wrap;
+			margin-top: 30px;
+		}
+		
+		.btn {
+			display: inline-block;
+			padding: 12px 30px;
+			border-radius: var(--border-radius);
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			cursor: pointer;
+		}
+		
+		.btn-primary {
+			background-color: var(--primary-color);
+			color: white;
+			box-shadow: var(--shadow);
+		}
+		
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 12px rgba(0, 122, 204, 0.3);
+		}
+		
+		.btn-secondary {
+			background-color: transparent;
+			color: var(--primary-color);
+			border: 2px solid var(--primary-color);
+		}
+		
+		.btn-secondary:hover {
+			background-color: var(--primary-color);
+			color: white;
+		}
+		
+		main {
+			padding: 60px 0;
+		}
+		
+		.section {
+			margin-bottom: 60px;
+		}
+		
+		.section-title {
+			font-size: 2rem;
+			color: var(--primary-color);
+			margin-bottom: 30px;
+			text-align: center;
+		}
+		
+		.links-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 25px;
+			margin-top: 40px;
+		}
+		
+		.link-card {
+			background-color: var(--card-bg);
+			padding: 30px;
+			border-radius: var(--border-radius);
+			box-shadow: var(--shadow);
+			transition: all 0.3s ease;
+			text-decoration: none;
+			color: var(--text-color);
+			display: block;
+		}
+		
+		.link-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		}
+		
+		.link-card-title {
+			font-size: 1.5rem;
+			color: var(--primary-color);
+			margin-bottom: 10px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		
+		.link-card-description {
+			opacity: 0.9;
+			font-size: 0.95rem;
+		}
+		
+		.icon {
+			width: 30px;
+			height: 30px;
+			fill: var(--primary-color);
+		}
+		
+		.features {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+			margin-top: 30px;
+		}
+		
+		.feature {
+			padding: 20px;
+			background-color: var(--card-bg);
+			border-radius: var(--border-radius);
+			border-left: 4px solid var(--primary-color);
+		}
+		
+		.feature h3 {
+			color: var(--secondary-color);
+			margin-bottom: 10px;
+		}
+		
+		footer {
+			background-color: var(--card-bg);
+			padding: 40px 0;
+			text-align: center;
+			margin-top: 60px;
+			border-top: 2px solid var(--primary-color);
+		}
+		
+		footer p {
+			opacity: 0.8;
+		}
+		
+		footer a {
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+		
+		footer a:hover {
+			text-decoration: underline;
+		}
+		
+		.marketplace-badge {
+			display: inline-block;
+			margin: 20px 0;
+		}
+		
+		.marketplace-badge img {
+			height: 40px;
+			transition: transform 0.2s ease;
+		}
+		
+		.marketplace-badge:hover img {
+			transform: scale(1.05);
+		}
+		
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2rem;
+			}
+			
+			.tagline {
+				font-size: 1.1rem;
+			}
+			
+			.links-grid {
+				grid-template-columns: 1fr;
+			}
+			
+			.cta-buttons {
+				flex-direction: column;
+				align-items: center;
+			}
+			
+			.btn {
+				width: 100%;
+				max-width: 300px;
+				text-align: center;
+			}
+		}
+	</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>🌟 Ansarya</h1>
-            <p class="tagline">Development Hub & Repository Central</p>
-            <p class="subtitle">VS Code Extensions • Retro Game Development • Audio Tools • Open Source Projects</p>
-            
-            <div class="cta-buttons">
-                <a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" class="btn btn-primary" target="_blank" rel="noopener">
-                    📦 Visit Marketplace
-                </a>
-                <a href="https://github.com/TheAnsarya" class="btn btn-secondary" target="_blank" rel="noopener">
-                    💻 GitHub Profile
-                </a>
-                <a href="pages/repositories.html" class="btn btn-secondary">
-                    📚 All Repositories
-                </a>
-                <a href="pages/plans.html" class="btn btn-secondary">
-                    🗺️ Roadmap & Plans
-                </a>
-            </div>
-            
-            <!-- Marketplace Badge -->
-            <div class="marketplace-badge">
-                <a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" rel="noopener">
-                    <img src="https://img.shields.io/badge/VS_Code-Extension-blue?style=for-the-badge&logo=visual-studio-code" alt="VS Code Extension">
-                </a>
-            </div>
-        </div>
-    </header>
-    
-    <main>
-        <div class="container">
-            <!-- Featured Projects Section -->
-            <section class="section">
-                <h2 class="section-title">🌟 Featured Projects</h2>
-                <div class="links-grid">
-                    <a href="https://marketplace.visualstudio.com/items?itemName=TheAnsarya.poppy-assembly" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.29 4.1 17.26.05a1.33 1.33 0 0 0-1.72.09L.83 13.25a1.33 1.33 0 0 0 0 1.88l3.04 3.04a1.33 1.33 0 0 0 1.88 0L20.46 5.46a1.33 1.33 0 0 0 .09-1.72zm-1.67 1.33L5.75 19.3 2.71 16.26 16.58 2.39l3.04 3.04z"/></svg>
-                            Poppy Assembly
-                        </h3>
-                        <p class="link-card-description">VS Code extension for assembly language development with IntelliSense and debugging</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya/ffmq-info" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">⚔️ FFMQ Info</h3>
-                        <p class="link-card-description">Final Fantasy: Mystic Quest complete disassembly and documentation (⭐ 4)</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya/ableton-snes-spc" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">🎵 SNES SPC Workflow</h3>
-                        <p class="link-card-description">Round-trip SNES music editing with Ableton Live integration</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya/GameInfo" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">🎮 GameInfo</h3>
-                        <p class="link-card-description">Comprehensive Dragon Warrior games database and ROM analysis</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya/subrom" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">📦 SubROM</h3>
-                        <p class="link-card-description">Efficient ROM manager as alternative to RomVault (⭐ 3)</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya/bps-patch" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">🩹 BPS Patch</h3>
-                        <p class="link-card-description">BPS patch file handler for ROM modding (⭐ 2, 🔀 2)</p>
-                    </a>
-                </div>
-            </section>
-            
-            <!-- All Repositories Section -->
-            <section class="section">
-                <h2 class="section-title">📚 Repository Categories</h2>
-                <div class="links-grid">
-                    <a href="pages/repositories.html" class="link-card">
-                        <h3 class="link-card-title">📋 All Repositories</h3>
-                        <p class="link-card-description">Browse all 33+ repositories organized by category</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya?tab=repositories" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                            GitHub Repositories
-                        </h3>
-                        <p class="link-card-description">View all repositories on GitHub</p>
-                    </a>
-                    
-                    <a href="pages/plans.html" class="link-card">
-                        <h3 class="link-card-title">🗺️ Roadmap & Plans</h3>
-                        <p class="link-card-description">Current projects, future plans, and development roadmap</p>
-                    </a>
-                    
-                    <a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">📦 Marketplace</h3>
-                        <p class="link-card-description">VS Code extensions and publisher profile</p>
-                    </a>
-                </div>
-            </section>
-            
-            <!-- Quick Links Section -->
-            <section class="section">
-                <h2 class="section-title">🔗 Quick Access</h2>
-                <div class="links-grid">
-                    <a href="https://github.com/TheAnsarya/theansarya.github.io" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            This Website's Repo
-                        </h3>
-                        <p class="link-card-description">Source code for ansarya.com</p>
-                    </a>
-                    
-                    <a href="~docs/custom-domain-setup.html" class="link-card">
-                        <h3 class="link-card-title">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-                            Domain Setup Guide
-                        </h3>
-                        <p class="link-card-description">How we configured ansarya.com with Cloudflare & GitHub Pages</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya/GameInfo/issues/170" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">🎯 Active Epic</h3>
-                        <p class="link-card-description">SNES Music Editing Workflow - track development progress</p>
-                    </a>
-                    
-                    <a href="https://github.com/TheAnsarya" class="link-card" target="_blank" rel="noopener">
-                        <h3 class="link-card-title">📊 GitHub Profile</h3>
-                        <p class="link-card-description">3,601+ contributions • Arctic Code Vault Contributor</p>
-                    </a>
-                </div>
-            </section>
-            
-            <!-- Focus Areas Section -->
-            <section class="section">
-                <h2 class="section-title">🎯 Development Focus</h2>
-                <div class="features">
-                    <div class="feature">
-                        <h3>🔧 VS Code Extensions</h3>
-                        <p>Professional developer tools including Poppy Assembly and more</p>
-                    </div>
-                    <div class="feature">
-                        <h3>🎮 Retro Game Dev</h3>
-                        <p>SNES/NES ROM hacking, disassembly, and game analysis</p>
-                    </div>
-                    <div class="feature">
-                        <h3>🎵 Audio Tools</h3>
-                        <p>SNES SPC music editing and Ableton Live integration</p>
-                    </div>
-                    <div class="feature">
-                        <h3>📚 Documentation</h3>
-                        <p>Comprehensive guides, disassemblies, and technical references</p>
-                    </div>
-                    <div class="feature">
-                        <h3>🌐 Open Source</h3>
-                        <p>All projects open for contributions and community-driven</p>
-                    </div>
-                    <div class="feature">
-                        <h3>🤖 AI-Powered</h3>
-                        <p>Built with GitHub Copilot for enhanced development</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Getting Started Section -->
-            <section class="section">
-                <h2 class="section-title">🎯 Explore & Contribute</h2>
-                <div style="background-color: var(--card-bg); padding: 30px; border-radius: var(--border-radius); max-width: 800px; margin: 0 auto;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 15px;">For Extension Users</h3>
-                    <ol style="line-height: 2; padding-left: 20px;">
-                        <li>Browse <a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" style="color: var(--primary-color);">VS Code Marketplace</a></li>
-                        <li>Install Poppy Assembly or other extensions</li>
-                        <li>Read the documentation</li>
-                        <li>Report issues or request features</li>
-                        <li>Join the community! 🎉</li>
-                    </ol>
-                    
-                    <h3 style="color: var(--primary-color); margin: 25px 0 15px;">For Contributors</h3>
-                    <ol style="line-height: 2; padding-left: 20px;">
-                        <li>Check out <a href="pages/repositories.html" style="color: var(--primary-color);">all repositories</a></li>
-                        <li>Read CONTRIBUTING.md in each repo</li>
-                        <li>Pick an issue or suggest a feature</li>
-                        <li>Submit pull requests</li>
-                        <li>Share your expertise!</li>
-                    </ol>
-                    
-                    <h3 style="color: var(--primary-color); margin: 25px 0 15px;">For ROM Hackers</h3>
-                    <p>Explore our <a href="https://github.com/TheAnsarya/ffmq-info" target="_blank" style="color: var(--primary-color);">game disassemblies</a>, use our <a href="https://github.com/TheAnsarya/subrom" target="_blank" style="color: var(--primary-color);">ROM tools</a>, and check the <a href="https://github.com/TheAnsarya/ableton-snes-spc" target="_blank" style="color: var(--primary-color);">music workflow</a> for SNES development.</p>
-                </div>
-            </section>
-        </div>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 <a href="https://github.com/TheAnsarya" target="_blank" rel="noopener">TheAnsarya</a>. All rights reserved.</p>
-            <p style="margin-top: 10px;">
-                <a href="pages/repositories.html">All Repositories</a> • 
-                <a href="pages/plans.html">Roadmap</a> • 
-                <a href="~docs/custom-domain-setup.html">Domain Setup</a> • 
-                <a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" rel="noopener">Marketplace</a> • 
-                <a href="https://github.com/TheAnsarya" target="_blank" rel="noopener">GitHub</a>
-            </p>
-        </div>
-    </footer>
-    
-    <!-- Optional: Add analytics or other scripts here -->
-    <script>
-        // Add smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-        
-        // Log page view (optional - remove if not needed)
-        console.log('Ansarya page loaded successfully!');
-    </script>
+	<header>
+		<div class="container">
+			<h1>🌟 Ansarya</h1>
+			<p class="tagline">Development Hub & Repository Central</p>
+			<p class="subtitle">VS Code Extensions • Retro Game Development • Audio Tools • Open Source Projects</p>
+			
+			<div class="cta-buttons">
+				<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" class="btn btn-primary" target="_blank" rel="noopener">
+					📦 Visit Marketplace
+				</a>
+				<a href="https://github.com/TheAnsarya" class="btn btn-secondary" target="_blank" rel="noopener">
+					💻 GitHub Profile
+				</a>
+				<a href="pages/repositories.html" class="btn btn-secondary">
+					📚 All Repositories
+				</a>
+				<a href="pages/plans.html" class="btn btn-secondary">
+					🗺️ Roadmap & Plans
+				</a>
+			</div>
+			
+			<!-- Marketplace Badge -->
+			<div class="marketplace-badge">
+				<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" rel="noopener">
+					<img src="https://img.shields.io/badge/VS_Code-Extension-blue?style=for-the-badge&logo=visual-studio-code" alt="VS Code Extension">
+				</a>
+			</div>
+		</div>
+	</header>
+	
+	<main>
+		<div class="container">
+			<!-- Featured Projects Section -->
+			<section class="section">
+				<h2 class="section-title">🌟 Featured Projects</h2>
+				<div class="links-grid">
+					<a href="https://marketplace.visualstudio.com/items?itemName=TheAnsarya.poppy-assembly" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">
+							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.29 4.1 17.26.05a1.33 1.33 0 0 0-1.72.09L.83 13.25a1.33 1.33 0 0 0 0 1.88l3.04 3.04a1.33 1.33 0 0 0 1.88 0L20.46 5.46a1.33 1.33 0 0 0 .09-1.72zm-1.67 1.33L5.75 19.3 2.71 16.26 16.58 2.39l3.04 3.04z"/></svg>
+							Poppy Assembly
+						</h3>
+						<p class="link-card-description">VS Code extension for assembly language development with IntelliSense and debugging</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya/ffmq-info" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">⚔️ FFMQ Info</h3>
+						<p class="link-card-description">Final Fantasy: Mystic Quest complete disassembly and documentation (⭐ 4)</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya/ableton-snes-spc" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">🎵 SNES SPC Workflow</h3>
+						<p class="link-card-description">Round-trip SNES music editing with Ableton Live integration</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya/GameInfo" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">🎮 GameInfo</h3>
+						<p class="link-card-description">Comprehensive Dragon Warrior games database and ROM analysis</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya/subrom" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">📦 SubROM</h3>
+						<p class="link-card-description">Efficient ROM manager as alternative to RomVault (⭐ 3)</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya/bps-patch" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">🩹 BPS Patch</h3>
+						<p class="link-card-description">BPS patch file handler for ROM modding (⭐ 2, 🔀 2)</p>
+					</a>
+				</div>
+			</section>
+			
+			<!-- All Repositories Section -->
+			<section class="section">
+				<h2 class="section-title">📚 Repository Categories</h2>
+				<div class="links-grid">
+					<a href="pages/repositories.html" class="link-card">
+						<h3 class="link-card-title">📋 All Repositories</h3>
+						<p class="link-card-description">Browse all 33+ repositories organized by category</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya?tab=repositories" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">
+							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+							GitHub Repositories
+						</h3>
+						<p class="link-card-description">View all repositories on GitHub</p>
+					</a>
+					
+					<a href="pages/plans.html" class="link-card">
+						<h3 class="link-card-title">🗺️ Roadmap & Plans</h3>
+						<p class="link-card-description">Current projects, future plans, and development roadmap</p>
+					</a>
+					
+					<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">📦 Marketplace</h3>
+						<p class="link-card-description">VS Code extensions and publisher profile</p>
+					</a>
+				</div>
+			</section>
+			
+			<!-- Quick Links Section -->
+			<section class="section">
+				<h2 class="section-title">🔗 Quick Access</h2>
+				<div class="links-grid">
+					<a href="https://github.com/TheAnsarya/theansarya.github.io" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">
+							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+							This Website's Repo
+						</h3>
+						<p class="link-card-description">Source code for ansarya.com</p>
+					</a>
+					
+					<a href="~docs/custom-domain-setup.html" class="link-card">
+						<h3 class="link-card-title">
+							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+							Domain Setup Guide
+						</h3>
+						<p class="link-card-description">How we configured ansarya.com with Cloudflare & GitHub Pages</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya/GameInfo/issues/170" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">🎯 Active Epic</h3>
+						<p class="link-card-description">SNES Music Editing Workflow - track development progress</p>
+					</a>
+					
+					<a href="https://github.com/TheAnsarya" class="link-card" target="_blank" rel="noopener">
+						<h3 class="link-card-title">📊 GitHub Profile</h3>
+						<p class="link-card-description">3,601+ contributions • Arctic Code Vault Contributor</p>
+					</a>
+				</div>
+			</section>
+			
+			<!-- Focus Areas Section -->
+			<section class="section">
+				<h2 class="section-title">🎯 Development Focus</h2>
+				<div class="features">
+					<div class="feature">
+						<h3>🔧 VS Code Extensions</h3>
+						<p>Professional developer tools including Poppy Assembly and more</p>
+					</div>
+					<div class="feature">
+						<h3>🎮 Retro Game Dev</h3>
+						<p>SNES/NES ROM hacking, disassembly, and game analysis</p>
+					</div>
+					<div class="feature">
+						<h3>🎵 Audio Tools</h3>
+						<p>SNES SPC music editing and Ableton Live integration</p>
+					</div>
+					<div class="feature">
+						<h3>📚 Documentation</h3>
+						<p>Comprehensive guides, disassemblies, and technical references</p>
+					</div>
+					<div class="feature">
+						<h3>🌐 Open Source</h3>
+						<p>All projects open for contributions and community-driven</p>
+					</div>
+					<div class="feature">
+						<h3>🤖 AI-Powered</h3>
+						<p>Built with GitHub Copilot for enhanced development</p>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Getting Started Section -->
+			<section class="section">
+				<h2 class="section-title">🎯 Explore & Contribute</h2>
+				<div style="background-color: var(--card-bg); padding: 30px; border-radius: var(--border-radius); max-width: 800px; margin: 0 auto;">
+					<h3 style="color: var(--primary-color); margin-bottom: 15px;">For Extension Users</h3>
+					<ol style="line-height: 2; padding-left: 20px;">
+						<li>Browse <a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" style="color: var(--primary-color);">VS Code Marketplace</a></li>
+						<li>Install Poppy Assembly or other extensions</li>
+						<li>Read the documentation</li>
+						<li>Report issues or request features</li>
+						<li>Join the community! 🎉</li>
+					</ol>
+					
+					<h3 style="color: var(--primary-color); margin: 25px 0 15px;">For Contributors</h3>
+					<ol style="line-height: 2; padding-left: 20px;">
+						<li>Check out <a href="pages/repositories.html" style="color: var(--primary-color);">all repositories</a></li>
+						<li>Read CONTRIBUTING.md in each repo</li>
+						<li>Pick an issue or suggest a feature</li>
+						<li>Submit pull requests</li>
+						<li>Share your expertise!</li>
+					</ol>
+					
+					<h3 style="color: var(--primary-color); margin: 25px 0 15px;">For ROM Hackers</h3>
+					<p>Explore our <a href="https://github.com/TheAnsarya/ffmq-info" target="_blank" style="color: var(--primary-color);">game disassemblies</a>, use our <a href="https://github.com/TheAnsarya/subrom" target="_blank" style="color: var(--primary-color);">ROM tools</a>, and check the <a href="https://github.com/TheAnsarya/ableton-snes-spc" target="_blank" style="color: var(--primary-color);">music workflow</a> for SNES development.</p>
+				</div>
+			</section>
+		</div>
+	</main>
+	
+	<footer>
+		<div class="container">
+			<p>&copy; 2026 <a href="https://github.com/TheAnsarya" target="_blank" rel="noopener">TheAnsarya</a>. All rights reserved.</p>
+			<p style="margin-top: 10px;">
+				<a href="pages/repositories.html">All Repositories</a> • 
+				<a href="pages/plans.html">Roadmap</a> • 
+				<a href="~docs/custom-domain-setup.html">Domain Setup</a> • 
+				<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" rel="noopener">Marketplace</a> • 
+				<a href="https://github.com/TheAnsarya" target="_blank" rel="noopener">GitHub</a>
+			</p>
+		</div>
+	</footer>
+	
+	<!-- Optional: Add analytics or other scripts here -->
+	<script>
+		// Add smooth scrolling
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			});
+		});
+		
+		// Log page view (optional - remove if not needed)
+		console.log('Ansarya page loaded successfully!');
+	</script>
 </body>
 </html>
