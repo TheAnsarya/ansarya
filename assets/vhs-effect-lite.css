@@ -1,0 +1,96 @@
+/* ==========================================================================
+   🎬 VHS/CRT Effect - Lightweight Version
+   Pure CSS, no animations, minimal GPU usage
+   ========================================================================== */
+
+:root {
+	--vhs-scanline-opacity: 0.06;
+	--vhs-vignette-strength: 0.2;
+}
+
+/* Reduced motion - disable all effects */
+@media (prefers-reduced-motion: reduce) {
+	.vhs-container::before,
+	.vhs-container::after {
+		display: none !important;
+	}
+}
+
+/* ==========================================================================
+   VHS Container - Apply to body
+   ========================================================================== */
+
+.vhs-container {
+	position: relative;
+}
+
+/* Vignette effect only - single gradient, no animation */
+.vhs-container::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: 9998;
+	background: radial-gradient(
+		ellipse at center,
+		transparent 0%,
+		transparent 65%,
+		rgba(0, 0, 0, var(--vhs-vignette-strength)) 100%
+	);
+}
+
+/* Static scanlines - CSS only, no animation */
+.vhs-container::after {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: 9999;
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, var(--vhs-scanline-opacity)) 2px,
+		rgba(0, 0, 0, var(--vhs-scanline-opacity)) 4px
+	);
+}
+
+/* ==========================================================================
+   Toggle Button
+   ========================================================================== */
+
+.vhs-toggle {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 10001;
+	padding: 6px 12px;
+	font-family: 'Space Mono', monospace;
+	font-size: 11px;
+	color: #f5e6d3;
+	background: #2a1f14;
+	border: 1px solid #6b8e6b;
+	border-radius: 4px;
+	cursor: pointer;
+	opacity: 0.6;
+	transition: opacity 0.2s;
+}
+
+.vhs-toggle:hover {
+	opacity: 1;
+}
+
+/* ==========================================================================
+   Disabled State
+   ========================================================================== */
+
+.vhs-disabled .vhs-container::before,
+.vhs-disabled .vhs-container::after {
+	display: none !important;
+}

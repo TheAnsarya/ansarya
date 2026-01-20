@@ -1,6 +1,6 @@
 /**
  * 🎬 VHS/CRT Effect - Dynamic JavaScript Component
- * 
+ *
  * Usage:
  *   <script src="assets/vhs-effect.js"></script>
  *   <script>
@@ -39,7 +39,7 @@ const VHSEffect = (function() {
 		config = { ...defaults, ...options };
 
 		// Check reduced motion preference
-		if (config.respectReducedMotion && 
+		if (config.respectReducedMotion &&
 			window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 			config.flicker = false;
 			config.noise = false;
