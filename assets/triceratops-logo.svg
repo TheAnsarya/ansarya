@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Ansarya Triceratops Logo - Retro '70s/'80s Style -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" width="200" height="180">
+	<defs>
+		<!-- Retro gradient for frill -->
+		<linearGradient id="frillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+			<stop offset="0%" style="stop-color:#4a7c4e;stop-opacity:1" />
+			<stop offset="50%" style="stop-color:#3d6b41;stop-opacity:1" />
+			<stop offset="100%" style="stop-color:#2d5432;stop-opacity:1" />
+		</linearGradient>
+		<!-- Body gradient -->
+		<linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+			<stop offset="0%" style="stop-color:#5c8a5f;stop-opacity:1" />
+			<stop offset="100%" style="stop-color:#4a7c4e;stop-opacity:1" />
+		</linearGradient>
+		<!-- Horn gradient -->
+		<linearGradient id="hornGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+			<stop offset="0%" style="stop-color:#d4a574;stop-opacity:1" />
+			<stop offset="100%" style="stop-color:#f5e6d3;stop-opacity:1" />
+		</linearGradient>
+		<!-- Retro glow effect -->
+		<filter id="retroGlow" x="-20%" y="-20%" width="140%" height="140%">
+			<feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+			<feMerge>
+				<feMergeNode in="coloredBlur"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter>
+	</defs>
+	
+	<!-- Frill/Shield (back of head) -->
+	<path d="M60,45 
+		Q40,30 35,50 
+		Q25,40 20,55 
+		Q10,50 15,70 
+		Q5,75 15,90 
+		Q10,100 25,105 
+		Q20,115 40,115 
+		Q45,125 65,120 
+		Q75,130 95,125 
+		L100,110 
+		Q85,100 75,85 
+		Q70,70 65,60 
+		Z" 
+		fill="url(#frillGradient)" 
+		stroke="#2d5432" 
+		stroke-width="2"/>
+	
+	<!-- Frill decorative circles (retro '70s touch) -->
+	<circle cx="30" cy="65" r="6" fill="#f4a460" stroke="#d4874a" stroke-width="1.5"/>
+	<circle cx="25" cy="85" r="5" fill="#ff9f7f" stroke="#e87f5f" stroke-width="1.5"/>
+	<circle cx="40" cy="100" r="6" fill="#f4a460" stroke="#d4874a" stroke-width="1.5"/>
+	<circle cx="60" cy="110" r="5" fill="#ff9f7f" stroke="#e87f5f" stroke-width="1.5"/>
+	<circle cx="80" cy="115" r="4" fill="#f5e6d3" stroke="#d4c4a3" stroke-width="1"/>
+	
+	<!-- Head/Face -->
+	<path d="M100,110 
+		Q115,115 130,105 
+		Q145,100 155,90 
+		Q165,85 175,80 
+		Q180,75 178,70 
+		Q175,65 165,68 
+		Q155,60 145,65 
+		Q135,55 120,60 
+		Q110,55 100,60 
+		Q90,65 85,75 
+		Q80,85 85,95 
+		Q90,105 100,110 
+		Z" 
+		fill="url(#bodyGradient)" 
+		stroke="#2d5432" 
+		stroke-width="2"/>
+	
+	<!-- Nose horn (main) -->
+	<path d="M168,72 
+		Q175,55 172,35 
+		Q170,25 165,30 
+		Q160,40 158,55 
+		Q156,65 160,72 
+		Z" 
+		fill="url(#hornGradient)" 
+		stroke="#c9a574" 
+		stroke-width="1.5"/>
+	
+	<!-- Brow horns (two smaller) -->
+	<path d="M130,62 
+		Q138,45 135,30 
+		Q132,25 128,32 
+		Q124,45 126,58 
+		Z" 
+		fill="url(#hornGradient)" 
+		stroke="#c9a574" 
+		stroke-width="1.5"/>
+	<path d="M112,58 
+		Q118,42 114,28 
+		Q111,24 108,30 
+		Q105,42 108,55 
+		Z" 
+		fill="url(#hornGradient)" 
+		stroke="#c9a574" 
+		stroke-width="1.5"/>
+	
+	<!-- Eye -->
+	<ellipse cx="142" cy="78" rx="8" ry="6" fill="#f5e6d3"/>
+	<ellipse cx="144" cy="78" rx="4" ry="4" fill="#3d2918"/>
+	<circle cx="145" cy="77" r="1.5" fill="#f5e6d3"/>
+	
+	<!-- Beak/Mouth -->
+	<path d="M170,78 
+		Q178,82 182,88 
+		Q180,92 175,90 
+		Q168,88 165,85 
+		Z" 
+		fill="#d4a574" 
+		stroke="#c9a574" 
+		stroke-width="1"/>
+	
+	<!-- Nostril -->
+	<ellipse cx="172" cy="75" rx="2" ry="1.5" fill="#3d6b41"/>
+	
+	<!-- Neck/Body hint -->
+	<path d="M85,95 
+		Q70,110 60,130 
+		Q55,145 65,155 
+		Q80,160 100,155 
+		Q115,150 125,140 
+		Q135,125 130,110 
+		Q125,100 115,95 
+		Z" 
+		fill="url(#bodyGradient)" 
+		stroke="#2d5432" 
+		stroke-width="2"/>
+	
+	<!-- Vegetation/Leaf decorations (post-apocalyptic growth) -->
+	<g fill="#6b8e23" stroke="#556b2f" stroke-width="1">
+		<!-- Leaf 1 -->
+		<path d="M20,120 Q25,130 20,145 Q30,140 35,145 Q30,130 25,118 Z"/>
+		<!-- Leaf 2 -->
+		<path d="M180,95 Q190,100 195,115 Q185,110 182,118 Q180,105 175,98 Z"/>
+		<!-- Small fern -->
+		<path d="M15,140 Q20,145 18,155 Q25,150 22,158 Q15,152 12,145 Z"/>
+	</g>
+	
+	<!-- Vine accents -->
+	<path d="M5,130 Q15,125 25,135 Q35,145 30,160" 
+		fill="none" 
+		stroke="#556b2f" 
+		stroke-width="2" 
+		stroke-linecap="round"/>
+	<path d="M185,105 Q195,115 190,130" 
+		fill="none" 
+		stroke="#556b2f" 
+		stroke-width="2" 
+		stroke-linecap="round"/>
+	
+	<!-- Pink flower accents (retro touch) -->
+	<g fill="#ffb6c1" stroke="#ff69b4" stroke-width="0.5">
+		<circle cx="12" cy="155" r="3"/>
+		<circle cx="192" cy="125" r="2.5"/>
+	</g>
+	
+	<!-- Orange berry accents -->
+	<g fill="#ff7f50" stroke="#ff6347" stroke-width="0.5">
+		<circle cx="28" cy="158" r="2"/>
+		<circle cx="8" cy="148" r="1.5"/>
+	</g>
+</svg>

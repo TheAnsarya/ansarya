@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Ansarya Repositories - All ROM hacking tools, disassembly projects, and documentation">
+	<title>📦 Repositories - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--brown-dark: #2a1f14;
+			--brown-medium: #3d2918;
+			--brown-warm: #5c3d1e;
+			--brown-light: #8b5a2b;
+			--cream-light: #f5e6d3;
+			--cream-medium: #e8d4be;
+			--cream-warm: #d4c4a8;
+			--cream-dark: #c9b896;
+			--green-dark: #2d5432;
+			--green-forest: #3d6b41;
+			--green-fern: #4a7c4e;
+			--green-sage: #6b8e6b;
+			--green-moss: #8fbc8f;
+			--green-vine: #556b2f;
+			--orange-sunset: #f4a460;
+			--orange-rust: #d4874a;
+			--pink-blush: #ffb6c1;
+
+			--bg-primary: var(--brown-dark);
+			--bg-secondary: var(--brown-medium);
+			--bg-card: var(--brown-warm);
+			--text-primary: var(--cream-light);
+			--text-secondary: var(--cream-medium);
+			--text-muted: var(--cream-dark);
+			--link-color: var(--green-moss);
+			--border-color: var(--brown-light);
+
+			--font-heading: 'Libre Baskerville', Georgia, serif;
+			--font-body: 'Space Mono', monospace;
+
+			--space-4: 1rem;
+			--space-5: 1.5rem;
+			--space-6: 2rem;
+			--space-8: 3rem;
+			--space-10: 4rem;
+
+			--radius-md: 8px;
+			--radius-lg: 16px;
+			--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+		}
+
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+		body {
+			font-family: var(--font-body);
+			line-height: 1.7;
+			color: var(--text-primary);
+			background: var(--bg-primary);
+			min-height: 100vh;
+		}
+
+		.container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-5); }
+
+		/* Navigation */
+		.nav-bar {
+			background: var(--bg-secondary);
+			padding: var(--space-4) 0;
+			border-bottom: 3px solid var(--green-fern);
+		}
+
+		.nav-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: var(--space-4);
+		}
+
+		.nav-brand {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+			text-decoration: none;
+			color: var(--cream-light);
+		}
+
+		.nav-brand img { height: 40px; }
+		.nav-brand span { font-family: var(--font-heading); font-size: 1.25rem; }
+
+		.nav-links { display: flex; gap: var(--space-5); flex-wrap: wrap; }
+		.nav-links a {
+			color: var(--text-secondary);
+			text-decoration: none;
+			transition: color 0.2s;
+		}
+		.nav-links a:hover { color: var(--cream-light); }
+
+		/* Page Header */
+		.page-header {
+			text-align: center;
+			padding: var(--space-10) 0 var(--space-8);
+			border-bottom: 2px solid var(--border-color);
+		}
+
+		.page-header h1 {
+			font-family: var(--font-heading);
+			font-size: 2.5rem;
+			color: var(--cream-light);
+			margin-bottom: var(--space-4);
+		}
+
+		.page-header p {
+			color: var(--text-muted);
+			max-width: 700px;
+			margin: 0 auto;
+		}
+
+		/* Main Content */
+		main { padding: var(--space-8) 0; }
+
+		/* Category Sections */
+		.category {
+			margin-bottom: var(--space-10);
+		}
+
+		.category h2 {
+			font-family: var(--font-heading);
+			font-size: 1.5rem;
+			color: var(--cream-light);
+			padding: var(--space-4) var(--space-5);
+			background: var(--bg-secondary);
+			border-left: 4px solid var(--green-fern);
+			margin-bottom: var(--space-5);
+			border-radius: 0 var(--radius-md) var(--radius-md) 0;
+		}
+
+		.category h2 .icon { margin-right: var(--space-4); }
+
+		/* Repository Grid */
+		.repo-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+			gap: var(--space-5);
+		}
+
+		/* Repository Card */
+		.repo-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border-color);
+			border-radius: var(--radius-lg);
+			overflow: hidden;
+			transition: transform 0.2s, box-shadow 0.2s;
+		}
+
+		.repo-card:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 20px rgba(74, 124, 78, 0.2);
+		}
+
+		.repo-card-header {
+			padding: var(--space-4) var(--space-5);
+			background: linear-gradient(135deg, var(--green-dark) 0%, var(--brown-warm) 100%);
+			border-bottom: 2px solid var(--green-fern);
+		}
+
+		.repo-card-header h3 {
+			font-family: var(--font-heading);
+			font-size: 1.1rem;
+			margin: 0;
+		}
+
+		.repo-card-header h3 a {
+			color: var(--cream-light);
+			text-decoration: none;
+		}
+
+		.repo-card-header h3 a:hover {
+			text-decoration: underline;
+		}
+
+		.repo-card-body {
+			padding: var(--space-4) var(--space-5);
+		}
+
+		.repo-card-body p {
+			color: var(--text-secondary);
+			font-size: 0.9rem;
+			margin: 0 0 var(--space-4);
+		}
+
+		.repo-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+		}
+
+		.repo-tag {
+			font-size: 0.75rem;
+			padding: 3px 8px;
+			border-radius: 12px;
+			font-weight: 600;
+		}
+
+		.tag-csharp { background: var(--green-forest); color: var(--cream-light); }
+		.tag-python { background: var(--orange-rust); color: var(--cream-light); }
+		.tag-assembly { background: var(--pink-blush); color: var(--brown-dark); }
+		.tag-nes { background: #c74848; color: var(--cream-light); }
+		.tag-snes { background: #6a5acd; color: var(--cream-light); }
+		.tag-gb { background: #2e8b57; color: var(--cream-light); }
+		.tag-docs { background: var(--cream-warm); color: var(--brown-dark); }
+		.tag-tool { background: var(--green-sage); color: var(--brown-dark); }
+		.tag-web { background: #4682b4; color: var(--cream-light); }
+
+		/* Footer */
+		footer {
+			background: var(--bg-secondary);
+			padding: var(--space-6) 0;
+			text-align: center;
+			margin-top: var(--space-10);
+			border-top: 3px solid var(--green-fern);
+		}
+
+		footer p { color: var(--text-muted); font-size: 0.875rem; margin: 0; }
+		footer a { color: var(--link-color); text-decoration: none; }
+		footer a:hover { text-decoration: underline; }
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.nav-content { flex-direction: column; text-align: center; }
+			.page-header h1 { font-size: 2rem; }
+			.repo-grid { grid-template-columns: 1fr; }
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../index.html" class="nav-brand">
+				<img src="../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../index.html">Home</a>
+				<a href="repositories.html">Repositories</a>
+				<a href="plans.html">Roadmap</a>
+				<a href="howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="page-header">
+		<div class="container">
+			<h1>📦 All Repositories</h1>
+			<p>
+				Complete collection of ROM hacking tools, disassembly projects, documentation,
+				and game research resources. All projects are open source and available on GitHub.
+			</p>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+
+			<!-- Flower Toolchain -->
+			<section class="category">
+				<h2><span class="icon">🌷</span> Flower Toolchain</h2>
+				<div class="repo-grid">
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/poppy" target="_blank">🌸 Poppy</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Multi-system assembly compiler targeting retro gaming platforms. Compiles .pasm source files into playable ROMs for NES, SNES, and Game Boy.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-assembly">.pasm</span>
+								<span class="repo-tag tag-nes">NES</span>
+								<span class="repo-tag tag-snes">SNES</span>
+								<span class="repo-tag tag-gb">GB</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/peony" target="_blank">🌺 Peony</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Multi-system disassembler framework - the "anti-Poppy". Converts ROM binaries back into human-readable assembly source code.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-tool">Disassembler</span>
+								<span class="repo-tag tag-nes">NES</span>
+								<span class="repo-tag tag-snes">SNES</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/pansy" target="_blank">🌼 Pansy</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Universal disassembly metadata format. Stores symbols, comments, cross-references, and memory regions for sharing between tools.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-tool">Metadata</span>
+								<span class="repo-tag tag-docs">Format</span>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<!-- Core Tools -->
+			<section class="category">
+				<h2><span class="icon">🛠️</span> Core Tools</h2>
+				<div class="repo-grid">
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/GameInfo" target="_blank">🎮 GameInfo</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>ROM hacking toolkit with .NET CLI tools, Python utilities, and Blazor web editors. Includes wiki content for Dark Repos.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-python">Python</span>
+								<span class="repo-tag tag-tool">Toolkit</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/bps-patch" target="_blank">📝 BPS Patch</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Modern .NET implementation of the BPS binary patching format. Create and apply patches for ROM distribution.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-tool">Patching</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/logsmall" target="_blank">📊 LogSmall</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>ROM analysis and data extraction libraries for Dragon Quest and Dragon Warrior games. Core libraries for game research.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-nes">NES</span>
+								<span class="repo-tag tag-snes">SNES</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/Mesen2" target="_blank">🎮 Mesen2 Fork</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Fork of Mesen2 multi-system emulator with enhanced debugging features and Pansy format export support.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-tool">Emulator</span>
+								<span class="repo-tag tag-nes">NES</span>
+								<span class="repo-tag tag-snes">SNES</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/DiztinGUIsh/DiztinGUIsh" target="_blank">🔍 DiztinGUIsh</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Interactive SNES ROM disassembler and analysis tool with GUI. Trace code execution and generate labeled disassembly.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-tool">Disassembler</span>
+								<span class="repo-tag tag-snes">SNES</span>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<!-- Dragon Quest/Warrior Series -->
+			<section class="category">
+				<h2><span class="icon">⚔️</span> Dragon Quest / Dragon Warrior</h2>
+				<div class="repo-grid">
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/dragon-warrior-info" target="_blank">🐉 Dragon Warrior Info</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Dragon Warrior (NES) complete documentation, disassembly, and ROM hacking resources for the original game.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-assembly">6502</span>
+								<span class="repo-tag tag-nes">NES</span>
+								<span class="repo-tag tag-docs">Documentation</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/dragon-warrior-4-info" target="_blank">🏰 Dragon Warrior IV Info</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Dragon Warrior IV (NES) disassembly project with comprehensive analysis, asset extraction, and build pipeline.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-assembly">6502</span>
+								<span class="repo-tag tag-python">Python</span>
+								<span class="repo-tag tag-nes">NES</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/dq3r-info" target="_blank">👑 DQ3r Info</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Dragon Quest III Remake (SNES) analysis and documentation project with advanced disassembly tools.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-assembly">65816</span>
+								<span class="repo-tag tag-python">Python</span>
+								<span class="repo-tag tag-snes">SNES</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/dq4r-info" target="_blank">🗡️ DQ4r Info</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Dragon Quest IV Remake (PlayStation) research and documentation with data extraction tools.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-python">Python</span>
+								<span class="repo-tag tag-docs">Documentation</span>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<!-- Final Fantasy Series -->
+			<section class="category">
+				<h2><span class="icon">✨</span> Final Fantasy Series</h2>
+				<div class="repo-grid">
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/ffmq-info" target="_blank">🌲 FFMQ Info</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Final Fantasy Mystic Quest (SNES) complete disassembly and documentation project with comprehensive research.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-assembly">65816</span>
+								<span class="repo-tag tag-python">Python</span>
+								<span class="repo-tag tag-snes">SNES</span>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<!-- Audio Projects -->
+			<section class="category">
+				<h2><span class="icon">🎵</span> Audio Projects</h2>
+				<div class="repo-grid">
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/ableton-snes-spc" target="_blank">🎹 Ableton SNES SPC</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>VST3 plugin for authentic SNES SPC700 audio synthesis in Ableton Live. Emulates the Sony SPC700 sound chip.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-csharp">C#</span>
+								<span class="repo-tag tag-tool">VST3</span>
+								<span class="repo-tag tag-snes">SNES</span>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<!-- Infrastructure -->
+			<section class="category">
+				<h2><span class="icon">🏗️</span> Infrastructure</h2>
+				<div class="repo-grid">
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/ansarya" target="_blank">🦕 Ansarya.com</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>This website! Central hub for all Ansarya projects with documentation, how-to guides, and project listings.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-web">HTML</span>
+								<span class="repo-tag tag-docs">Documentation</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="repo-card">
+						<div class="repo-card-header">
+							<h3><a href="https://github.com/TheAnsarya/project-base" target="_blank">📋 Project Base</a></h3>
+						</div>
+						<div class="repo-card-body">
+							<p>Template repository with standard project structure, documentation templates, and best practices.</p>
+							<div class="repo-tags">
+								<span class="repo-tag tag-docs">Template</span>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../index.html">Home</a> ·
+				<a href="howto.html">How-To</a> ·
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>

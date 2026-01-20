@@ -44,7 +44,7 @@ Clean up and flesh out documentation, including github pages setup, cloudflare s
 
 never update this file `ansarya-manual-prompts-log.txt` this is a file that only I edit, never change it, never revert it, always git commit it, but never do anything to change it, hands off; format using k&r braces and tabs not spaces, I added the `editorconfig` file, format everything; git commit so it updates the github pages;
 
-
+format the whole project, 1-space, 2-space, 3-space, and 4-space tabs all need to be converted to TABS; fix code and comments and everything; reformat the whole thing; 
 
 
 

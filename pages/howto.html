@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Ansarya How-To Guides - Step-by-step tutorials for ROM hacking, assembly programming, and the Flower Toolchain">
+	<title>📚 How-To Guides - Ansarya</title>
+	
+	<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	
+	<style>
+		/* Import shared styles - same as main site */
+		:root {
+			--brown-dark: #2a1f14;
+			--brown-medium: #3d2918;
+			--brown-warm: #5c3d1e;
+			--brown-light: #8b5a2b;
+			--cream-light: #f5e6d3;
+			--cream-medium: #e8d4be;
+			--cream-warm: #d4c4a8;
+			--cream-dark: #c9b896;
+			--green-dark: #2d5432;
+			--green-forest: #3d6b41;
+			--green-fern: #4a7c4e;
+			--green-sage: #6b8e6b;
+			--green-moss: #8fbc8f;
+			--green-vine: #556b2f;
+			--orange-sunset: #f4a460;
+			--orange-rust: #d4874a;
+			--pink-blush: #ffb6c1;
+			
+			--bg-primary: var(--brown-dark);
+			--bg-secondary: var(--brown-medium);
+			--bg-card: var(--brown-warm);
+			--text-primary: var(--cream-light);
+			--text-secondary: var(--cream-medium);
+			--text-muted: var(--cream-dark);
+			--link-color: var(--green-moss);
+			--border-color: var(--brown-light);
+			
+			--font-heading: 'Libre Baskerville', Georgia, serif;
+			--font-body: 'Space Mono', monospace;
+			
+			--space-4: 1rem;
+			--space-5: 1.5rem;
+			--space-6: 2rem;
+			--space-8: 3rem;
+			--space-10: 4rem;
+			
+			--radius-md: 8px;
+			--radius-lg: 16px;
+			--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+		}
+		
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		
+		body {
+			font-family: var(--font-body);
+			line-height: 1.7;
+			color: var(--text-primary);
+			background: var(--bg-primary);
+			min-height: 100vh;
+		}
+		
+		.container { max-width: 1000px; margin: 0 auto; padding: 0 var(--space-5); }
+		
+		/* Navigation */
+		.nav-bar {
+			background: var(--bg-secondary);
+			padding: var(--space-4) 0;
+			border-bottom: 3px solid var(--green-fern);
+		}
+		
+		.nav-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: var(--space-4);
+		}
+		
+		.nav-brand {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+			text-decoration: none;
+			color: var(--cream-light);
+		}
+		
+		.nav-brand img { height: 40px; }
+		.nav-brand span { font-family: var(--font-heading); font-size: 1.25rem; }
+		
+		.nav-links { display: flex; gap: var(--space-5); flex-wrap: wrap; }
+		.nav-links a {
+			color: var(--text-secondary);
+			text-decoration: none;
+			transition: color 0.2s;
+		}
+		.nav-links a:hover { color: var(--cream-light); }
+		
+		/* Page Header */
+		.page-header {
+			text-align: center;
+			padding: var(--space-10) 0 var(--space-8);
+			border-bottom: 2px solid var(--border-color);
+		}
+		
+		.page-header h1 {
+			font-family: var(--font-heading);
+			font-size: 2.5rem;
+			color: var(--cream-light);
+			margin-bottom: var(--space-4);
+		}
+		
+		.page-header p {
+			color: var(--text-muted);
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		
+		/* Main Content */
+		main { padding: var(--space-8) 0; }
+		
+		h2 {
+			font-family: var(--font-heading);
+			font-size: 1.75rem;
+			color: var(--cream-light);
+			margin: var(--space-8) 0 var(--space-5);
+			padding-bottom: var(--space-4);
+			border-bottom: 2px solid var(--green-forest);
+		}
+		
+		h2 .icon { margin-right: var(--space-4); }
+		
+		h3 {
+			font-family: var(--font-heading);
+			font-size: 1.25rem;
+			color: var(--orange-sunset);
+			margin: var(--space-6) 0 var(--space-4);
+		}
+		
+		p { margin-bottom: var(--space-4); color: var(--text-secondary); }
+		
+		a { color: var(--link-color); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+		
+		/* Guide Cards */
+		.guide-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border-color);
+			border-radius: var(--radius-lg);
+			margin-bottom: var(--space-6);
+			overflow: hidden;
+		}
+		
+		.guide-header {
+			background: linear-gradient(135deg, var(--green-dark) 0%, var(--brown-warm) 100%);
+			padding: var(--space-5);
+			border-bottom: 3px solid var(--green-fern);
+		}
+		
+		.guide-header h3 {
+			margin: 0;
+			color: var(--cream-light);
+		}
+		
+		.guide-content { padding: var(--space-5); }
+		
+		.guide-intro {
+			background: var(--bg-secondary);
+			padding: var(--space-4);
+			border-radius: var(--radius-md);
+			margin-bottom: var(--space-5);
+			border-left: 4px solid var(--orange-sunset);
+		}
+		
+		.guide-intro p { margin: 0; }
+		
+		/* Steps */
+		.steps { list-style: none; counter-reset: step; }
+		
+		.steps li {
+			counter-increment: step;
+			padding: var(--space-5);
+			padding-left: 70px;
+			position: relative;
+			border-bottom: 1px solid var(--border-color);
+		}
+		
+		.steps li:last-child { border-bottom: none; }
+		
+		.steps li::before {
+			content: counter(step);
+			position: absolute;
+			left: var(--space-4);
+			top: var(--space-5);
+			width: 40px;
+			height: 40px;
+			background: var(--green-forest);
+			color: var(--cream-light);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			font-size: 1.25rem;
+		}
+		
+		.steps li strong {
+			display: block;
+			color: var(--cream-light);
+			margin-bottom: var(--space-4);
+		}
+		
+		/* Code Blocks */
+		code {
+			font-family: var(--font-body);
+			background: var(--bg-secondary);
+			padding: 2px 6px;
+			border-radius: 4px;
+			font-size: 0.9rem;
+		}
+		
+		pre {
+			background: var(--bg-secondary);
+			padding: var(--space-4);
+			border-radius: var(--radius-md);
+			overflow-x: auto;
+			margin: var(--space-4) 0;
+			border: 1px solid var(--border-color);
+		}
+		
+		pre code {
+			background: none;
+			padding: 0;
+		}
+		
+		/* Tips & Notes */
+		.tip, .note, .warning {
+			padding: var(--space-4);
+			border-radius: var(--radius-md);
+			margin: var(--space-4) 0;
+		}
+		
+		.tip {
+			background: rgba(74, 124, 78, 0.2);
+			border-left: 4px solid var(--green-fern);
+		}
+		
+		.note {
+			background: rgba(244, 164, 96, 0.2);
+			border-left: 4px solid var(--orange-sunset);
+		}
+		
+		.warning {
+			background: rgba(255, 107, 107, 0.2);
+			border-left: 4px solid #ff6b6b;
+		}
+		
+		/* Table of Contents */
+		.toc {
+			background: var(--bg-secondary);
+			padding: var(--space-5);
+			border-radius: var(--radius-lg);
+			margin-bottom: var(--space-8);
+		}
+		
+		.toc h3 {
+			margin-top: 0;
+			color: var(--cream-light);
+		}
+		
+		.toc ul {
+			list-style: none;
+			margin: 0;
+		}
+		
+		.toc li {
+			padding: var(--space-4) 0;
+			border-bottom: 1px solid var(--border-color);
+		}
+		
+		.toc li:last-child { border-bottom: none; }
+		
+		.toc a {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+		}
+		
+		.toc .icon { font-size: 1.5rem; }
+		
+		/* Footer */
+		footer {
+			background: var(--bg-secondary);
+			padding: var(--space-6) 0;
+			text-align: center;
+			margin-top: var(--space-10);
+			border-top: 3px solid var(--green-fern);
+		}
+		
+		footer p { color: var(--text-muted); font-size: 0.875rem; margin: 0; }
+		footer a { color: var(--link-color); }
+		
+		/* Responsive */
+		@media (max-width: 768px) {
+			.nav-content { flex-direction: column; text-align: center; }
+			.page-header h1 { font-size: 2rem; }
+			.steps li { padding-left: 60px; }
+			.steps li::before { width: 35px; height: 35px; font-size: 1rem; }
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../index.html" class="nav-brand">
+				<img src="../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../index.html">Home</a>
+				<a href="repositories.html">Repositories</a>
+				<a href="plans.html">Roadmap</a>
+				<a href="howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+	
+	<header class="page-header">
+		<div class="container">
+			<h1>📚 How-To Guides</h1>
+			<p>
+				Step-by-step tutorials for ROM hacking, assembly programming, 
+				and using the Flower Toolchain (Poppy, Peony, Pansy).
+			</p>
+		</div>
+	</header>
+	
+	<main>
+		<div class="container">
+			
+			<!-- Table of Contents -->
+			<div class="toc">
+				<h3>📋 Table of Contents</h3>
+				<ul>
+					<li><a href="#getting-started"><span class="icon">🚀</span> Getting Started with ROM Hacking</a></li>
+					<li><a href="#peony-disassembly"><span class="icon">🌺</span> Disassembling ROMs with Peony</a></li>
+					<li><a href="#pansy-metadata"><span class="icon">🌼</span> Working with Pansy Metadata</a></li>
+					<li><a href="#poppy-assembly"><span class="icon">🌷</span> Building ROMs with Poppy</a></li>
+					<li><a href="#roundtrip"><span class="icon">🔄</span> Complete Roundtrip Workflow</a></li>
+					<li><a href="#mesen2-integration"><span class="icon">🎮</span> Mesen2 Integration</a></li>
+				</ul>
+			</div>
+			
+			<!-- Getting Started -->
+			<section id="getting-started">
+				<h2><span class="icon">🚀</span> Getting Started with ROM Hacking</h2>
+				
+				<div class="guide-card">
+					<div class="guide-header">
+						<h3>Prerequisites & Setup</h3>
+					</div>
+					<div class="guide-content">
+						<div class="guide-intro">
+							<p>Before diving into ROM hacking, you'll need a few tools and some basic knowledge. This guide covers the essentials.</p>
+						</div>
+						
+						<ol class="steps">
+							<li>
+								<strong>Install .NET 10 SDK</strong>
+								<p>All Flower Toolchain projects require .NET 10. Download from <a href="https://dotnet.microsoft.com/download" target="_blank">dotnet.microsoft.com</a>.</p>
+								<pre><code># Verify installation
+dotnet --version
+# Should output: 10.x.x</code></pre>
+							</li>
+							
+							<li>
+								<strong>Install Visual Studio Code</strong>
+								<p>VS Code is the recommended editor. Install the Poppy Assembly extension for syntax highlighting.</p>
+								<pre><code># Install Poppy extension from marketplace
+# Or search for "Poppy Assembly" in VS Code extensions</code></pre>
+							</li>
+							
+							<li>
+								<strong>Clone the Flower Toolchain</strong>
+								<p>Get all three tools from GitHub:</p>
+								<pre><code>git clone https://github.com/TheAnsarya/poppy.git
+git clone https://github.com/TheAnsarya/peony.git
+git clone https://github.com/TheAnsarya/pansy.git</code></pre>
+							</li>
+							
+							<li>
+								<strong>Build the Tools</strong>
+								<p>Build each project with dotnet:</p>
+								<pre><code>cd poppy && dotnet build
+cd ../peony && dotnet build
+cd ../pansy && dotnet build</code></pre>
+							</li>
+							
+							<li>
+								<strong>Get a Test ROM</strong>
+								<p>You'll need a legally-obtained ROM to practice with. Many homebrew ROMs are freely available for learning.</p>
+								<div class="tip">
+									<strong>💡 Tip:</strong> Start with a simple homebrew ROM before tackling commercial games. Complex mappers and bank switching can be challenging.
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Peony Disassembly -->
+			<section id="peony-disassembly">
+				<h2><span class="icon">🌺</span> Disassembling ROMs with Peony</h2>
+				
+				<div class="guide-card">
+					<div class="guide-header">
+						<h3>Basic Disassembly Workflow</h3>
+					</div>
+					<div class="guide-content">
+						<div class="guide-intro">
+							<p>Peony converts binary ROM files into human-readable assembly source code. This is the first step in understanding how a game works.</p>
+						</div>
+						
+						<ol class="steps">
+							<li>
+								<strong>Run Basic Disassembly</strong>
+								<p>The simplest command disassembles the entire ROM:</p>
+								<pre><code>peony disasm game.nes --output ./src/</code></pre>
+								<p>This creates assembly files in the <code>./src/</code> directory and a Pansy metadata file.</p>
+							</li>
+							
+							<li>
+								<strong>Specify Platform (if needed)</strong>
+								<p>Peony usually auto-detects the platform, but you can specify it:</p>
+								<pre><code>peony disasm game.sfc --platform snes --output ./src/</code></pre>
+								<p>Supported platforms: <code>nes</code>, <code>snes</code>, <code>gb</code>, <code>gba</code></p>
+							</li>
+							
+							<li>
+								<strong>Review the Output</strong>
+								<p>Peony generates several files:</p>
+								<ul style="margin: var(--space-4) 0; padding-left: var(--space-6);">
+									<li><code>main.pasm</code> - Main assembly file</li>
+									<li><code>*.pasm</code> - Additional bank/segment files</li>
+									<li><code>game.pansy</code> - Metadata (labels, comments)</li>
+								</ul>
+							</li>
+							
+							<li>
+								<strong>Understand the Assembly</strong>
+								<p>Peony annotates code with auto-generated labels:</p>
+								<pre><code>Reset:
+    sei                 ; Disable interrupts
+    cld                 ; Clear decimal mode
+    ldx #$ff
+    txs                 ; Set stack pointer
+    jsr Initialize      ; Jump to init routine
+    
+MainLoop:
+    jsr ReadInput       ; Read controller
+    jsr UpdateGame      ; Update game state
+    jsr WaitVBlank      ; Wait for vblank
+    jmp MainLoop        ; Loop forever</code></pre>
+							</li>
+							
+							<li>
+								<strong>Refine Labels and Comments</strong>
+								<p>Rename auto-generated labels to meaningful names. This is where the real reverse engineering happens!</p>
+								<div class="note">
+									<strong>📝 Note:</strong> Use Pansy to store your analysis. Labels and comments in the Pansy file persist across re-disassembly.
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Pansy Metadata -->
+			<section id="pansy-metadata">
+				<h2><span class="icon">🌼</span> Working with Pansy Metadata</h2>
+				
+				<div class="guide-card">
+					<div class="guide-header">
+						<h3>Understanding the Pansy Format</h3>
+					</div>
+					<div class="guide-content">
+						<div class="guide-intro">
+							<p>Pansy files store all your analysis data: symbols, comments, cross-references, and memory region definitions. They're portable and can be shared with collaborators.</p>
+						</div>
+						
+						<ol class="steps">
+							<li>
+								<strong>What's in a Pansy File?</strong>
+								<p>A Pansy file contains:</p>
+								<ul style="margin: var(--space-4) 0; padding-left: var(--space-6);">
+									<li><strong>Symbols</strong> - Address-to-name mappings (labels)</li>
+									<li><strong>Comments</strong> - Annotations at specific addresses</li>
+									<li><strong>Cross-References</strong> - Who calls/jumps where</li>
+									<li><strong>Memory Regions</strong> - Code vs data areas</li>
+									<li><strong>Platform Info</strong> - Target system (NES, SNES, etc.)</li>
+								</ul>
+							</li>
+							
+							<li>
+								<strong>View Pansy File Contents</strong>
+								<p>Use the Pansy CLI to inspect a file:</p>
+								<pre><code>pansy info game.pansy
+pansy symbols game.pansy
+pansy xrefs game.pansy $8000</code></pre>
+							</li>
+							
+							<li>
+								<strong>Add Symbols Programmatically</strong>
+								<p>Use the C# library to create or modify Pansy files:</p>
+								<pre><code>using Pansy.Core;
+
+var metadata = new PansyFile();
+metadata.Platform = Platform.NES;
+metadata.AddSymbol(0x8000, "Reset");
+metadata.AddSymbol(0x8100, "MainLoop");
+metadata.AddComment(0x8000, "Entry point after reset");
+metadata.Save("game.pansy");</code></pre>
+							</li>
+							
+							<li>
+								<strong>Export from Mesen2</strong>
+								<p>If you've labeled code in Mesen2, export to Pansy format:</p>
+								<ol style="margin: var(--space-4) 0; padding-left: var(--space-6);">
+									<li>Open Mesen2 with your ROM</li>
+									<li>Go to Debug → Export Labels</li>
+									<li>Select "Pansy Format (.pansy)"</li>
+									<li>Save the file</li>
+								</ol>
+							</li>
+							
+							<li>
+								<strong>Share with Collaborators</strong>
+								<p>Pansy files are self-contained. Share them alongside disassembly projects so others can benefit from your analysis.</p>
+								<div class="tip">
+									<strong>💡 Tip:</strong> Commit Pansy files to version control. They diff well and track the evolution of your understanding.
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Poppy Assembly -->
+			<section id="poppy-assembly">
+				<h2><span class="icon">🌷</span> Building ROMs with Poppy</h2>
+				
+				<div class="guide-card">
+					<div class="guide-header">
+						<h3>Assembling Source to ROM</h3>
+					</div>
+					<div class="guide-content">
+						<div class="guide-intro">
+							<p>Poppy is a multi-platform assembler that compiles .pasm source files into playable ROMs. It's designed to work seamlessly with Peony's output.</p>
+						</div>
+						
+						<ol class="steps">
+							<li>
+								<strong>Create a Simple Assembly File</strong>
+								<p>Start with a minimal NES program:</p>
+								<pre><code>.platform nes
+.org $8000
+
+Reset:
+    sei
+    cld
+    ldx #$ff
+    txs
+    
+MainLoop:
+    jmp MainLoop
+
+.org $fffa
+.dw 0       ; NMI vector
+.dw Reset   ; Reset vector
+.dw 0       ; IRQ vector</code></pre>
+							</li>
+							
+							<li>
+								<strong>Run Poppy</strong>
+								<p>Assemble the source file:</p>
+								<pre><code>poppy build main.pasm --output game.nes</code></pre>
+								<p>Poppy validates the code and generates the ROM.</p>
+							</li>
+							
+							<li>
+								<strong>Use Platform Directives</strong>
+								<p>Poppy supports platform-specific features:</p>
+								<pre><code>; NES
+.platform nes
+.mapper 0    ; NROM mapper
+
+; SNES
+.platform snes
+.mode lorom
+.bank 0</code></pre>
+							</li>
+							
+							<li>
+								<strong>Include Other Files</strong>
+								<p>Split large projects into multiple files:</p>
+								<pre><code>.include "hardware.pasm"
+.include "graphics.pasm"
+.include "audio.pasm"
+.include "main.pasm"</code></pre>
+							</li>
+							
+							<li>
+								<strong>Test the ROM</strong>
+								<p>Load the generated ROM in Mesen2 or your preferred emulator. Use the debugger to verify your code executes correctly.</p>
+								<div class="warning">
+									<strong>⚠️ Warning:</strong> Always test on accurate emulators before running on real hardware. Subtle timing issues can cause problems.
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Complete Roundtrip -->
+			<section id="roundtrip">
+				<h2><span class="icon">🔄</span> Complete Roundtrip Workflow</h2>
+				
+				<div class="guide-card">
+					<div class="guide-header">
+						<h3>From ROM to ROM (The Full Circle)</h3>
+					</div>
+					<div class="guide-content">
+						<div class="guide-intro">
+							<p>The ultimate test: disassemble a ROM, reassemble it, and get a byte-identical copy. This proves your toolchain and analysis are correct.</p>
+						</div>
+						
+						<ol class="steps">
+							<li>
+								<strong>Start with Original ROM</strong>
+								<p>Keep a pristine copy of your source ROM:</p>
+								<pre><code>cp original.nes backup/original.nes</code></pre>
+							</li>
+							
+							<li>
+								<strong>Disassemble with Peony</strong>
+								<pre><code>peony disasm original.nes --output src/ --pansy game.pansy</code></pre>
+							</li>
+							
+							<li>
+								<strong>Reassemble with Poppy (No Changes)</strong>
+								<pre><code>poppy build src/main.pasm --output rebuilt.nes</code></pre>
+							</li>
+							
+							<li>
+								<strong>Compare Binary Output</strong>
+								<pre><code># On Windows PowerShell
+Compare-Object (Get-Content original.nes -AsByteStream) `
+               (Get-Content rebuilt.nes -AsByteStream)
+
+# Should output nothing (files are identical)</code></pre>
+								<div class="tip">
+									<strong>💡 Success:</strong> If no differences are found, your roundtrip is complete! The disassembly is accurate.
+								</div>
+							</li>
+							
+							<li>
+								<strong>Now Make Your Changes</strong>
+								<p>With a verified roundtrip, you can confidently modify the source:</p>
+								<ul style="margin: var(--space-4) 0; padding-left: var(--space-6);">
+									<li>Fix bugs in the original game</li>
+									<li>Add new features</li>
+									<li>Translate text to another language</li>
+									<li>Modify game balance</li>
+								</ul>
+							</li>
+							
+							<li>
+								<strong>Test Your Modified ROM</strong>
+								<pre><code>poppy build src/main.pasm --output modified.nes
+# Load in emulator and test!</code></pre>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Mesen2 Integration -->
+			<section id="mesen2-integration">
+				<h2><span class="icon">🎮</span> Mesen2 Integration</h2>
+				
+				<div class="guide-card">
+					<div class="guide-header">
+						<h3>Using Mesen2 for Analysis</h3>
+					</div>
+					<div class="guide-content">
+						<div class="guide-intro">
+							<p>Mesen2 is a powerful multi-system emulator with excellent debugging features. Our fork adds Pansy export support for seamless integration with the Flower Toolchain.</p>
+						</div>
+						
+						<ol class="steps">
+							<li>
+								<strong>Get the Mesen2 Fork</strong>
+								<pre><code>git clone https://github.com/TheAnsarya/Mesen2.git
+cd Mesen2
+dotnet build</code></pre>
+							</li>
+							
+							<li>
+								<strong>Load Your ROM</strong>
+								<p>Open Mesen2 and load the ROM you want to analyze. Use the debugger (Debug menu) to explore.</p>
+							</li>
+							
+							<li>
+								<strong>Add Labels in the Debugger</strong>
+								<p>Right-click addresses in the disassembly view to add labels. Name subroutines, variables, and important addresses.</p>
+							</li>
+							
+							<li>
+								<strong>Export to Pansy Format</strong>
+								<ol style="margin: var(--space-4) 0; padding-left: var(--space-6);">
+									<li>Go to Debug → Export Labels</li>
+									<li>Choose "Pansy Format (.pansy)"</li>
+									<li>Select output location</li>
+									<li>Click Export</li>
+								</ol>
+							</li>
+							
+							<li>
+								<strong>Import Pansy Labels</strong>
+								<p>You can also import existing Pansy files into Mesen2:</p>
+								<ol style="margin: var(--space-4) 0; padding-left: var(--space-6);">
+									<li>Go to Debug → Import Labels</li>
+									<li>Select your .pansy file</li>
+									<li>Labels appear in the debugger</li>
+								</ol>
+								<div class="note">
+									<strong>📝 Note:</strong> Imported labels persist in Mesen2's workspace file, so you only need to import once per project.
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			
+		</div>
+	</main>
+	
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> · 
+				<a href="../index.html">Home</a> · 
+				<a href="repositories.html">Repositories</a> · 
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>

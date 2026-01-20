@@ -3,480 +3,1275 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Ansarya - Your comprehensive development companion for Visual Studio Code">
-	<meta name="keywords" content="ansarya, vscode, extension, developer tools, productivity">
+	<meta name="description" content="Ansarya - Retro game development tools, assembly compilers, disassemblers, and ROM hacking resources">
+	<meta name="keywords" content="ansarya, poppy, peony, pansy, assembly, disassembly, rom hacking, nes, snes, retro gaming">
 	<meta name="author" content="TheAnsarya">
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://theansarya.github.io/ansarya/">
-	<meta property="og:title" content="Ansarya - VS Code Extension">
-	<meta property="og:description" content="Your comprehensive development companion for Visual Studio Code">
+	<meta property="og:url" content="https://ansarya.com/">
+	<meta property="og:title" content="Ansarya - Retro Development Hub">
+	<meta property="og:description" content="Assembly compilers, disassemblers, and ROM hacking tools for retro gaming platforms">
+	<meta property="og:image" content="https://ansarya.com/assets/og-image.png">
 	
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image">
-	<meta property="twitter:url" content="https://theansarya.github.io/ansarya/">
-	<meta property="twitter:title" content="Ansarya - VS Code Extension">
-	<meta property="twitter:description" content="Your comprehensive development companion for Visual Studio Code">
+	<meta property="twitter:url" content="https://ansarya.com/">
+	<meta property="twitter:title" content="Ansarya - Retro Development Hub">
+	<meta property="twitter:description" content="Assembly compilers, disassemblers, and ROM hacking tools for retro gaming platforms">
 	
-	<title>Ansarya - Development Hub & Repository Central</title>
+	<title>🦕 Ansarya - Retro Development Hub</title>
+	
+	<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 	
 	<style>
+		/* ==========================================================================
+		   Ansarya Design System - '70s/'80s Retro TV + Post-Apocalyptic Vegetation
+		   ========================================================================== */
+		
 		:root {
-			--primary-color: #007acc;
-			--secondary-color: #68217a;
-			--text-color: #333;
-			--bg-color: #ffffff;
-			--card-bg: #f5f5f5;
-			--shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			--border-radius: 8px;
+			/* ===== CORE PALETTE ===== */
+			/* Browns - Primary backgrounds */
+			--brown-dark: #2a1f14;
+			--brown-medium: #3d2918;
+			--brown-warm: #5c3d1e;
+			--brown-light: #8b5a2b;
+			--brown-tan: #a67c52;
+			
+			/* Creams - Primary text */
+			--cream-light: #f5e6d3;
+			--cream-medium: #e8d4be;
+			--cream-warm: #d4c4a8;
+			--cream-dark: #c9b896;
+			
+			/* Greens - Vegetation accents */
+			--green-dark: #2d5432;
+			--green-forest: #3d6b41;
+			--green-fern: #4a7c4e;
+			--green-sage: #6b8e6b;
+			--green-moss: #8fbc8f;
+			--green-olive: #6b8e23;
+			--green-vine: #556b2f;
+			
+			/* Accent Colors - '70s/'80s retro pops */
+			--orange-rust: #d4874a;
+			--orange-sunset: #f4a460;
+			--orange-coral: #ff7f50;
+			--pink-blush: #ffb6c1;
+			--pink-hot: #ff69b4;
+			--pink-salmon: #ff9f7f;
+			--white-pure: #ffffff;
+			--white-warm: #faf8f5;
+			
+			/* ===== SEMANTIC COLORS ===== */
+			--bg-primary: var(--brown-dark);
+			--bg-secondary: var(--brown-medium);
+			--bg-card: var(--brown-warm);
+			--bg-elevated: var(--brown-light);
+			
+			--text-primary: var(--cream-light);
+			--text-secondary: var(--cream-medium);
+			--text-muted: var(--cream-dark);
+			--text-accent: var(--orange-sunset);
+			
+			--link-color: var(--green-moss);
+			--link-hover: var(--green-sage);
+			--link-visited: var(--pink-blush);
+			
+			--border-color: var(--brown-light);
+			--border-accent: var(--green-forest);
+			
+			/* ===== TYPOGRAPHY ===== */
+			--font-heading: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+			--font-body: 'Space Mono', 'Courier New', Courier, monospace;
+			--font-mono: 'Space Mono', monospace;
+			
+			/* Font Sizes */
+			--text-xs: 0.75rem;
+			--text-sm: 0.875rem;
+			--text-base: 1rem;
+			--text-lg: 1.125rem;
+			--text-xl: 1.25rem;
+			--text-2xl: 1.5rem;
+			--text-3xl: 2rem;
+			--text-4xl: 2.5rem;
+			--text-5xl: 3.5rem;
+			
+			/* ===== SPACING ===== */
+			--space-1: 0.25rem;
+			--space-2: 0.5rem;
+			--space-3: 0.75rem;
+			--space-4: 1rem;
+			--space-5: 1.5rem;
+			--space-6: 2rem;
+			--space-8: 3rem;
+			--space-10: 4rem;
+			--space-12: 6rem;
+			
+			/* ===== EFFECTS ===== */
+			--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+			--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+			--shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+			--shadow-glow: 0 0 20px rgba(79, 124, 78, 0.3);
+			
+			--radius-sm: 4px;
+			--radius-md: 8px;
+			--radius-lg: 16px;
+			--radius-xl: 24px;
+			
+			/* Retro TV scan line effect */
+			--scanline: repeating-linear-gradient(
+				0deg,
+				transparent,
+				transparent 2px,
+				rgba(0, 0, 0, 0.1) 2px,
+				rgba(0, 0, 0, 0.1) 4px
+			);
 		}
 		
-		@media (prefers-color-scheme: dark) {
-			:root {
-				--primary-color: #3794ff;
-				--secondary-color: #9d70b8;
-				--text-color: #e0e0e0;
-				--bg-color: #1e1e1e;
-				--card-bg: #2d2d2d;
-				--shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-			}
-		}
-		
-		* {
+		/* ===== RESET & BASE ===== */
+		*, *::before, *::after {
+			box-sizing: border-box;
 			margin: 0;
 			padding: 0;
-			box-sizing: border-box;
+		}
+		
+		html {
+			font-size: 16px;
+			scroll-behavior: smooth;
 		}
 		
 		body {
-			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-			line-height: 1.6;
-			color: var(--text-color);
-			background-color: var(--bg-color);
-			transition: background-color 0.3s ease;
+			font-family: var(--font-body);
+			font-size: var(--text-base);
+			line-height: 1.7;
+			color: var(--text-primary);
+			background-color: var(--bg-primary);
+			background-image: 
+				var(--scanline),
+				radial-gradient(ellipse at 50% 0%, var(--brown-medium) 0%, var(--brown-dark) 70%);
+			min-height: 100vh;
 		}
 		
+		/* ===== TYPOGRAPHY ===== */
+		h1, h2, h3, h4, h5, h6 {
+			font-family: var(--font-heading);
+			font-weight: 700;
+			line-height: 1.3;
+			color: var(--cream-light);
+			margin-bottom: var(--space-4);
+		}
+		
+		h1 { font-size: var(--text-5xl); }
+		h2 { font-size: var(--text-3xl); }
+		h3 { font-size: var(--text-2xl); }
+		h4 { font-size: var(--text-xl); }
+		
+		p {
+			margin-bottom: var(--space-4);
+			color: var(--text-secondary);
+		}
+		
+		a {
+			color: var(--link-color);
+			text-decoration: none;
+			transition: color 0.2s ease, text-shadow 0.2s ease;
+		}
+		
+		a:hover {
+			color: var(--link-hover);
+			text-shadow: 0 0 8px var(--green-sage);
+		}
+		
+		a:visited {
+			color: var(--link-visited);
+		}
+		
+		code, pre {
+			font-family: var(--font-mono);
+			background: var(--bg-secondary);
+			border-radius: var(--radius-sm);
+		}
+		
+		code {
+			padding: var(--space-1) var(--space-2);
+			font-size: var(--text-sm);
+		}
+		
+		pre {
+			padding: var(--space-4);
+			overflow-x: auto;
+			border: 1px solid var(--border-color);
+		}
+		
+		/* ===== LAYOUT ===== */
 		.container {
 			max-width: 1200px;
 			margin: 0 auto;
-			padding: 0 20px;
+			padding: 0 var(--space-5);
 		}
 		
+		/* ===== DECORATIVE ELEMENTS ===== */
+		.vine-border {
+			position: relative;
+		}
+		
+		.vine-border::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(
+				90deg,
+				var(--green-vine) 0%,
+				var(--green-fern) 25%,
+				var(--orange-sunset) 50%,
+				var(--green-fern) 75%,
+				var(--green-vine) 100%
+			);
+		}
+		
+		.leaf-accent {
+			display: inline-block;
+			color: var(--green-fern);
+		}
+		
+		.flower-accent {
+			display: inline-block;
+			color: var(--pink-blush);
+		}
+		
+		/* ===== HEADER ===== */
 		header {
-			padding: 60px 0 40px;
+			padding: var(--space-10) 0 var(--space-8);
 			text-align: center;
-			border-bottom: 2px solid var(--primary-color);
+			position: relative;
+			overflow: hidden;
 		}
 		
-		h1 {
-			font-size: 3rem;
-			color: var(--primary-color);
-			margin-bottom: 10px;
-			font-weight: 700;
+		header::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: 
+				radial-gradient(circle at 10% 80%, var(--green-dark) 0%, transparent 25%),
+				radial-gradient(circle at 90% 90%, var(--green-forest) 0%, transparent 20%),
+				radial-gradient(circle at 50% 10%, var(--brown-warm) 0%, transparent 30%);
+			opacity: 0.3;
+			pointer-events: none;
 		}
 		
-		.tagline {
-			font-size: 1.3rem;
-			color: var(--secondary-color);
-			margin-bottom: 20px;
-		}
-		
-		.subtitle {
-			font-size: 1rem;
-			opacity: 0.8;
-			margin-bottom: 30px;
-		}
-		
-		.cta-buttons {
+		.logo-container {
 			display: flex;
-			gap: 20px;
 			justify-content: center;
-			flex-wrap: wrap;
-			margin-top: 30px;
-		}
-		
-		.btn {
-			display: inline-block;
-			padding: 12px 30px;
-			border-radius: var(--border-radius);
-			text-decoration: none;
-			font-weight: 600;
-			transition: all 0.3s ease;
-			cursor: pointer;
-		}
-		
-		.btn-primary {
-			background-color: var(--primary-color);
-			color: white;
-			box-shadow: var(--shadow);
-		}
-		
-		.btn-primary:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 6px 12px rgba(0, 122, 204, 0.3);
-		}
-		
-		.btn-secondary {
-			background-color: transparent;
-			color: var(--primary-color);
-			border: 2px solid var(--primary-color);
-		}
-		
-		.btn-secondary:hover {
-			background-color: var(--primary-color);
-			color: white;
-		}
-		
-		main {
-			padding: 60px 0;
-		}
-		
-		.section {
-			margin-bottom: 60px;
-		}
-		
-		.section-title {
-			font-size: 2rem;
-			color: var(--primary-color);
-			margin-bottom: 30px;
-			text-align: center;
-		}
-		
-		.links-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 25px;
-			margin-top: 40px;
-		}
-		
-		.link-card {
-			background-color: var(--card-bg);
-			padding: 30px;
-			border-radius: var(--border-radius);
-			box-shadow: var(--shadow);
-			transition: all 0.3s ease;
-			text-decoration: none;
-			color: var(--text-color);
-			display: block;
-		}
-		
-		.link-card:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-		}
-		
-		.link-card-title {
-			font-size: 1.5rem;
-			color: var(--primary-color);
-			margin-bottom: 10px;
-			display: flex;
 			align-items: center;
-			gap: 10px;
+			margin-bottom: var(--space-6);
 		}
 		
-		.link-card-description {
-			opacity: 0.9;
-			font-size: 0.95rem;
+		.logo {
+			width: 150px;
+			height: auto;
+			filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+			transition: transform 0.3s ease;
 		}
 		
-		.icon {
-			width: 30px;
-			height: 30px;
-			fill: var(--primary-color);
-		}
-		
-		.features {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-			gap: 20px;
-			margin-top: 30px;
-		}
-		
-		.feature {
-			padding: 20px;
-			background-color: var(--card-bg);
-			border-radius: var(--border-radius);
-			border-left: 4px solid var(--primary-color);
-		}
-		
-		.feature h3 {
-			color: var(--secondary-color);
-			margin-bottom: 10px;
-		}
-		
-		footer {
-			background-color: var(--card-bg);
-			padding: 40px 0;
-			text-align: center;
-			margin-top: 60px;
-			border-top: 2px solid var(--primary-color);
-		}
-		
-		footer p {
-			opacity: 0.8;
-		}
-		
-		footer a {
-			color: var(--primary-color);
-			text-decoration: none;
-		}
-		
-		footer a:hover {
-			text-decoration: underline;
-		}
-		
-		.marketplace-badge {
-			display: inline-block;
-			margin: 20px 0;
-		}
-		
-		.marketplace-badge img {
-			height: 40px;
-			transition: transform 0.2s ease;
-		}
-		
-		.marketplace-badge:hover img {
+		.logo:hover {
 			transform: scale(1.05);
 		}
 		
+		.site-title {
+			font-size: var(--text-5xl);
+			color: var(--cream-light);
+			text-shadow: 
+				2px 2px 0 var(--brown-dark),
+				4px 4px 0 var(--green-dark),
+				0 0 30px rgba(139, 143, 139, 0.3);
+			letter-spacing: 0.1em;
+			margin-bottom: var(--space-2);
+		}
+		
+		.tagline {
+			font-family: var(--font-heading);
+			font-style: italic;
+			font-size: var(--text-xl);
+			color: var(--orange-sunset);
+			margin-bottom: var(--space-4);
+		}
+		
+		.subtitle {
+			font-size: var(--text-base);
+			color: var(--text-muted);
+			max-width: 600px;
+			margin: 0 auto var(--space-6);
+		}
+		
+		/* ===== NAVIGATION BUTTONS ===== */
+		.nav-buttons {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: var(--space-4);
+			margin-top: var(--space-6);
+		}
+		
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: var(--space-2);
+			padding: var(--space-3) var(--space-5);
+			font-family: var(--font-body);
+			font-size: var(--text-sm);
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			border-radius: var(--radius-md);
+			border: 2px solid;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-decoration: none;
+		}
+		
+		.btn-primary {
+			background: linear-gradient(135deg, var(--green-forest) 0%, var(--green-dark) 100%);
+			color: var(--cream-light);
+			border-color: var(--green-fern);
+			box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+		}
+		
+		.btn-primary:hover {
+			background: linear-gradient(135deg, var(--green-fern) 0%, var(--green-forest) 100%);
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-lg), var(--shadow-glow);
+			color: var(--cream-light);
+		}
+		
+		.btn-secondary {
+			background: transparent;
+			color: var(--cream-light);
+			border-color: var(--cream-dark);
+		}
+		
+		.btn-secondary:hover {
+			background: var(--brown-warm);
+			border-color: var(--orange-sunset);
+			color: var(--cream-light);
+		}
+		
+		.btn-accent {
+			background: linear-gradient(135deg, var(--orange-rust) 0%, var(--brown-warm) 100%);
+			color: var(--cream-light);
+			border-color: var(--orange-sunset);
+		}
+		
+		.btn-accent:hover {
+			background: linear-gradient(135deg, var(--orange-sunset) 0%, var(--orange-rust) 100%);
+			transform: translateY(-2px);
+			color: var(--cream-light);
+		}
+		
+		/* ===== MAIN CONTENT ===== */
+		main {
+			padding: var(--space-10) 0;
+		}
+		
+		section {
+			margin-bottom: var(--space-12);
+		}
+		
+		.section-header {
+			text-align: center;
+			margin-bottom: var(--space-8);
+		}
+		
+		.section-title {
+			display: inline-flex;
+			align-items: center;
+			gap: var(--space-3);
+			font-size: var(--text-3xl);
+			color: var(--cream-light);
+		}
+		
+		.section-title .icon {
+			font-size: var(--text-4xl);
+		}
+		
+		.section-divider {
+			width: 200px;
+			height: 3px;
+			margin: var(--space-4) auto 0;
+			background: linear-gradient(
+				90deg,
+				transparent,
+				var(--green-fern),
+				var(--orange-sunset),
+				var(--green-fern),
+				transparent
+			);
+			border-radius: 2px;
+		}
+		
+		/* ===== CARDS GRID ===== */
+		.cards-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			gap: var(--space-6);
+		}
+		
+		.card {
+			background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+			border: 1px solid var(--border-color);
+			border-radius: var(--radius-lg);
+			padding: var(--space-6);
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--green-forest), var(--green-fern));
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+		
+		.card:hover {
+			transform: translateY(-4px);
+			box-shadow: var(--shadow-lg), var(--shadow-glow);
+			border-color: var(--green-fern);
+		}
+		
+		.card:hover::before {
+			opacity: 1;
+		}
+		
+		.card-link {
+			display: block;
+			text-decoration: none;
+			color: inherit;
+		}
+		
+		.card-icon {
+			font-size: var(--text-4xl);
+			margin-bottom: var(--space-3);
+			display: block;
+		}
+		
+		.card-title {
+			font-family: var(--font-heading);
+			font-size: var(--text-xl);
+			color: var(--cream-light);
+			margin-bottom: var(--space-2);
+		}
+		
+		.card-description {
+			font-size: var(--text-sm);
+			color: var(--text-secondary);
+			line-height: 1.6;
+		}
+		
+		.card-meta {
+			display: flex;
+			gap: var(--space-3);
+			margin-top: var(--space-4);
+			padding-top: var(--space-3);
+			border-top: 1px solid var(--border-color);
+			font-size: var(--text-xs);
+			color: var(--text-muted);
+			flex-wrap: wrap;
+		}
+		
+		.card-tag {
+			display: inline-flex;
+			align-items: center;
+			gap: var(--space-1);
+			padding: var(--space-1) var(--space-2);
+			background: var(--bg-secondary);
+			border-radius: var(--radius-sm);
+			font-size: var(--text-xs);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+		
+		.tag-nes { color: #e60012; border: 1px solid #e60012; }
+		.tag-snes { color: #7b5aa6; border: 1px solid #7b5aa6; }
+		.tag-gb { color: #8b956d; border: 1px solid #8b956d; }
+		.tag-csharp { color: #68217a; border: 1px solid #68217a; }
+		.tag-python { color: #3572a5; border: 1px solid #3572a5; }
+		.tag-typescript { color: #3178c6; border: 1px solid #3178c6; }
+		.tag-assembly { color: var(--orange-sunset); border: 1px solid var(--orange-sunset); }
+		
+		/* ===== FLOWER TOOLCHAIN SECTION ===== */
+		.flower-toolchain {
+			background: linear-gradient(180deg, transparent 0%, var(--bg-secondary) 20%, var(--bg-secondary) 80%, transparent 100%);
+			padding: var(--space-10) 0;
+			margin: var(--space-10) 0;
+			position: relative;
+		}
+		
+		.flower-toolchain::before,
+		.flower-toolchain::after {
+			content: '🌿';
+			position: absolute;
+			font-size: 3rem;
+			opacity: 0.3;
+		}
+		
+		.flower-toolchain::before {
+			top: var(--space-4);
+			left: var(--space-4);
+		}
+		
+		.flower-toolchain::after {
+			bottom: var(--space-4);
+			right: var(--space-4);
+		}
+		
+		.toolchain-flow {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: var(--space-4);
+			margin: var(--space-8) 0;
+		}
+		
+		.tool-box {
+			text-align: center;
+			padding: var(--space-5);
+			background: var(--bg-card);
+			border: 2px solid var(--border-color);
+			border-radius: var(--radius-lg);
+			min-width: 200px;
+			transition: all 0.3s ease;
+			text-decoration: none;
+			color: inherit;
+		}
+		
+		.tool-box:hover {
+			border-color: var(--green-fern);
+			box-shadow: var(--shadow-glow);
+			transform: translateY(-4px);
+			color: inherit;
+		}
+		
+		.tool-box .icon {
+			font-size: 3rem;
+			display: block;
+			margin-bottom: var(--space-2);
+		}
+		
+		.tool-box h4 {
+			margin-bottom: var(--space-1);
+		}
+		
+		.tool-box p {
+			font-size: var(--text-sm);
+			color: var(--text-muted);
+			margin: 0;
+		}
+		
+		.flow-arrow {
+			font-size: 2rem;
+			color: var(--green-fern);
+		}
+		
+		/* ===== HOW-TO SECTION ===== */
+		.howto-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: var(--space-6);
+		}
+		
+		.howto-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border-color);
+			border-radius: var(--radius-lg);
+			overflow: hidden;
+		}
+		
+		.howto-header {
+			background: linear-gradient(135deg, var(--green-dark) 0%, var(--brown-warm) 100%);
+			padding: var(--space-4) var(--space-5);
+			border-bottom: 2px solid var(--green-fern);
+		}
+		
+		.howto-header h4 {
+			margin: 0;
+			color: var(--cream-light);
+			font-size: var(--text-lg);
+		}
+		
+		.howto-content {
+			padding: var(--space-5);
+		}
+		
+		.howto-steps {
+			list-style: none;
+			counter-reset: step;
+		}
+		
+		.howto-steps li {
+			counter-increment: step;
+			padding: var(--space-3) 0;
+			padding-left: var(--space-8);
+			position: relative;
+			border-bottom: 1px solid var(--border-color);
+		}
+		
+		.howto-steps li:last-child {
+			border-bottom: none;
+		}
+		
+		.howto-steps li::before {
+			content: counter(step);
+			position: absolute;
+			left: 0;
+			top: var(--space-3);
+			width: 28px;
+			height: 28px;
+			background: var(--green-forest);
+			color: var(--cream-light);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: var(--text-sm);
+			font-weight: 700;
+		}
+		
+		/* ===== VEGETATION DECORATIONS ===== */
+		.veg-border-top {
+			border-top: 3px solid;
+			border-image: linear-gradient(
+				90deg,
+				var(--green-vine),
+				var(--green-fern),
+				var(--pink-blush),
+				var(--green-fern),
+				var(--green-vine)
+			) 1;
+		}
+		
+		.veg-border-bottom {
+			border-bottom: 3px solid;
+			border-image: linear-gradient(
+				90deg,
+				var(--green-vine),
+				var(--orange-sunset),
+				var(--green-fern),
+				var(--orange-sunset),
+				var(--green-vine)
+			) 1;
+		}
+		
+		/* ===== FOOTER ===== */
+		footer {
+			background: var(--bg-secondary);
+			padding: var(--space-8) 0;
+			text-align: center;
+			position: relative;
+		}
+		
+		footer::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(
+				90deg,
+				var(--green-vine) 0%,
+				var(--green-fern) 20%,
+				var(--orange-sunset) 40%,
+				var(--pink-blush) 50%,
+				var(--orange-sunset) 60%,
+				var(--green-fern) 80%,
+				var(--green-vine) 100%
+			);
+		}
+		
+		.footer-content {
+			max-width: 800px;
+			margin: 0 auto;
+		}
+		
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: var(--space-3);
+			margin-bottom: var(--space-5);
+		}
+		
+		.footer-links a {
+			padding: var(--space-2) var(--space-3);
+			color: var(--text-secondary);
+			transition: color 0.2s ease;
+		}
+		
+		.footer-links a:hover {
+			color: var(--cream-light);
+		}
+		
+		.footer-copy {
+			color: var(--text-muted);
+			font-size: var(--text-sm);
+		}
+		
+		.footer-decoration {
+			margin-top: var(--space-4);
+			font-size: 1.5rem;
+			opacity: 0.5;
+		}
+		
+		/* ===== RESPONSIVE ===== */
 		@media (max-width: 768px) {
-			h1 {
-				font-size: 2rem;
+			.site-title {
+				font-size: var(--text-4xl);
 			}
 			
-			.tagline {
-				font-size: 1.1rem;
+			.section-title {
+				font-size: var(--text-2xl);
 			}
 			
-			.links-grid {
+			.cards-grid {
 				grid-template-columns: 1fr;
 			}
 			
-			.cta-buttons {
+			.howto-grid {
+				grid-template-columns: 1fr;
+			}
+			
+			.toolchain-flow {
+				flex-direction: column;
+			}
+			
+			.flow-arrow {
+				transform: rotate(90deg);
+			}
+			
+			.nav-buttons {
 				flex-direction: column;
 				align-items: center;
 			}
 			
 			.btn {
 				width: 100%;
-				max-width: 300px;
-				text-align: center;
+				max-width: 280px;
+				justify-content: center;
 			}
+		}
+		
+		/* ===== RETRO TV EFFECT (optional overlay) ===== */
+		.tv-effect {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			pointer-events: none;
+			z-index: 9999;
+			background: var(--scanline);
+			opacity: 0.03;
+		}
+		
+		/* ===== ANIMATIONS ===== */
+		@keyframes float {
+			0%, 100% { transform: translateY(0); }
+			50% { transform: translateY(-10px); }
+		}
+		
+		.float-animation {
+			animation: float 6s ease-in-out infinite;
+		}
+		
+		@keyframes glow-pulse {
+			0%, 100% { box-shadow: 0 0 5px var(--green-fern); }
+			50% { box-shadow: 0 0 20px var(--green-fern), 0 0 30px var(--green-sage); }
+		}
+		
+		.glow-animation {
+			animation: glow-pulse 4s ease-in-out infinite;
 		}
 	</style>
 </head>
 <body>
+	<!-- Subtle TV scanline overlay -->
+	<div class="tv-effect" aria-hidden="true"></div>
+	
 	<header>
 		<div class="container">
-			<h1>🌟 Ansarya</h1>
-			<p class="tagline">Development Hub & Repository Central</p>
-			<p class="subtitle">VS Code Extensions • Retro Game Development • Audio Tools • Open Source Projects</p>
-			
-			<div class="cta-buttons">
-				<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" class="btn btn-primary" target="_blank" rel="noopener">
-					📦 Visit Marketplace
-				</a>
-				<a href="https://github.com/TheAnsarya" class="btn btn-secondary" target="_blank" rel="noopener">
-					💻 GitHub Profile
-				</a>
-				<a href="pages/repositories.html" class="btn btn-secondary">
-					📚 All Repositories
-				</a>
-				<a href="pages/plans.html" class="btn btn-secondary">
-					🗺️ Roadmap & Plans
+			<div class="logo-container">
+				<a href="/" title="Ansarya Home">
+					<img src="assets/triceratops-logo.svg" alt="Ansarya Triceratops Logo" class="logo float-animation">
 				</a>
 			</div>
 			
-			<!-- Marketplace Badge -->
-			<div class="marketplace-badge">
-				<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" rel="noopener">
-					<img src="https://img.shields.io/badge/VS_Code-Extension-blue?style=for-the-badge&logo=visual-studio-code" alt="VS Code Extension">
+			<h1 class="site-title">🦕 Ansarya</h1>
+			<p class="tagline">"Where Code Takes Root in Ancient Ground"</p>
+			<p class="subtitle">
+				Assembly compilers, disassemblers, and ROM hacking tools for retro gaming platforms.
+				Building the future on the foundations of the past.
+			</p>
+			
+			<nav class="nav-buttons">
+				<a href="https://github.com/TheAnsarya" class="btn btn-primary" target="_blank" rel="noopener">
+					<span>💻</span> GitHub Profile
 				</a>
-			</div>
+				<a href="#projects" class="btn btn-secondary">
+					<span>📦</span> All Projects
+				</a>
+				<a href="#flower-tools" class="btn btn-accent">
+					<span>🌸</span> Flower Toolchain
+				</a>
+				<a href="pages/howto.html" class="btn btn-secondary">
+					<span>📚</span> How-To Guides
+				</a>
+			</nav>
 		</div>
 	</header>
 	
 	<main>
 		<div class="container">
-			<!-- Featured Projects Section -->
-			<section class="section">
-				<h2 class="section-title">🌟 Featured Projects</h2>
-				<div class="links-grid">
-					<a href="https://marketplace.visualstudio.com/items?itemName=TheAnsarya.poppy-assembly" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">
-							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.29 4.1 17.26.05a1.33 1.33 0 0 0-1.72.09L.83 13.25a1.33 1.33 0 0 0 0 1.88l3.04 3.04a1.33 1.33 0 0 0 1.88 0L20.46 5.46a1.33 1.33 0 0 0 .09-1.72zm-1.67 1.33L5.75 19.3 2.71 16.26 16.58 2.39l3.04 3.04z"/></svg>
-							Poppy Assembly
-						</h3>
-						<p class="link-card-description">VS Code extension for assembly language development with IntelliSense and debugging</p>
+			
+			<!-- ===== FLOWER TOOLCHAIN SECTION ===== -->
+			<section id="flower-tools" class="flower-toolchain">
+				<div class="section-header">
+					<h2 class="section-title">
+						<span class="icon">🌺</span>
+						The Flower Toolchain
+					</h2>
+					<div class="section-divider"></div>
+					<p style="max-width: 700px; margin: var(--space-4) auto 0; text-align: center;">
+						A complete ecosystem for retro game development: from ROM to source and back again.
+					</p>
+				</div>
+				
+				<div class="toolchain-flow">
+					<a href="https://github.com/TheAnsarya/peony" class="tool-box" target="_blank" rel="noopener">
+						<span class="icon">🌺</span>
+						<h4>Peony</h4>
+						<p>Disassembler</p>
+						<small>ROM → Source</small>
 					</a>
 					
-					<a href="https://github.com/TheAnsarya/ffmq-info" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">⚔️ FFMQ Info</h3>
-						<p class="link-card-description">Final Fantasy: Mystic Quest complete disassembly and documentation (⭐ 4)</p>
+					<span class="flow-arrow">→</span>
+					
+					<a href="https://github.com/TheAnsarya/pansy" class="tool-box" target="_blank" rel="noopener">
+						<span class="icon">🌼</span>
+						<h4>Pansy</h4>
+						<p>Metadata Format</p>
+						<small>Symbols & Analysis</small>
 					</a>
 					
-					<a href="https://github.com/TheAnsarya/ableton-snes-spc" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">🎵 SNES SPC Workflow</h3>
-						<p class="link-card-description">Round-trip SNES music editing with Ableton Live integration</p>
-					</a>
+					<span class="flow-arrow">→</span>
 					
-					<a href="https://github.com/TheAnsarya/GameInfo" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">🎮 GameInfo</h3>
-						<p class="link-card-description">Comprehensive Dragon Warrior games database and ROM analysis</p>
+					<a href="https://github.com/TheAnsarya/poppy" class="tool-box" target="_blank" rel="noopener">
+						<span class="icon">🌷</span>
+						<h4>Poppy</h4>
+						<p>Assembler</p>
+						<small>Source → ROM</small>
 					</a>
+				</div>
+				
+				<div style="text-align: center; margin-top: var(--space-6);">
+					<p style="color: var(--text-muted); font-size: var(--text-sm); max-width: 600px; margin: 0 auto;">
+						<strong style="color: var(--cream-light);">Roundtrip Guarantee:</strong> 
+						Disassemble with Peony, store metadata in Pansy, reassemble with Poppy — 
+						and get a byte-identical ROM every time.
+					</p>
+				</div>
+			</section>
+			
+			<!-- ===== FEATURED PROJECTS ===== -->
+			<section id="projects">
+				<div class="section-header">
+					<h2 class="section-title">
+						<span class="icon">⭐</span>
+						Featured Projects
+					</h2>
+					<div class="section-divider"></div>
+				</div>
+				
+				<div class="cards-grid">
+					<!-- Poppy -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/poppy" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🌷</span>
+							<h3 class="card-title">Poppy Assembly</h3>
+							<p class="card-description">
+								Multi-system assembly compiler targeting NES, SNES, and Game Boy. 
+								Includes VS Code extension with syntax highlighting, IntelliSense, and debugging support.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+								<span class="card-tag tag-typescript">TypeScript</span>
+								<span class="card-tag tag-assembly">6502/65816</span>
+							</div>
+						</a>
+					</article>
 					
-					<a href="https://github.com/TheAnsarya/subrom" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">📦 SubROM</h3>
-						<p class="link-card-description">Efficient ROM manager as alternative to RomVault (⭐ 3)</p>
-					</a>
+					<!-- Peony -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/peony" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🌺</span>
+							<h3 class="card-title">Peony Disassembler</h3>
+							<p class="card-description">
+								Multi-system disassembler framework — the "anti-Poppy" that converts ROM binaries 
+								back into source code with full roundtrip support.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+								<span class="card-tag tag-assembly">6502/65816</span>
+							</div>
+						</a>
+					</article>
 					
-					<a href="https://github.com/TheAnsarya/bps-patch" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">🩹 BPS Patch</h3>
-						<p class="link-card-description">BPS patch file handler for ROM modding (⭐ 2, 🔀 2)</p>
+					<!-- Pansy -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/pansy" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🌼</span>
+							<h3 class="card-title">Pansy Metadata</h3>
+							<p class="card-description">
+								Universal disassembly metadata format and toolkit. Store symbols, comments, 
+								cross-references, and memory regions in a portable binary format.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+								<span>Avalonia UI</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- GameInfo -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/GameInfo" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🎮</span>
+							<h3 class="card-title">GameInfo Toolkit</h3>
+							<p class="card-description">
+								Comprehensive ROM hacking toolkit with .NET 10 CLI tools, Python utilities, 
+								and Blazor web editors. Includes DarkRepos wiki content.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+								<span class="card-tag tag-python">Python</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- FFMQ Info -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/ffmq-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">⚔️</span>
+							<h3 class="card-title">FFMQ Disassembly</h3>
+							<p class="card-description">
+								Complete disassembly and documentation for Final Fantasy: Mystic Quest (SNES). 
+								Includes ROM structure maps, modding guides, and detailed code documentation.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-snes">SNES</span>
+								<span class="card-tag tag-assembly">65816</span>
+								<span>⭐ 4</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- BPS Patch -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/bps-patch" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🩹</span>
+							<h3 class="card-title">BPS Patch Library</h3>
+							<p class="card-description">
+								Modern .NET 10 implementation of the BPS (Binary Patch System) format. 
+								High-performance patch creation and application with ArrayPool optimizations.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C# .NET 10</span>
+								<span>⭐ 2</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- Dragon Warrior 4 -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/dragon-warrior-4-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🐉</span>
+							<h3 class="card-title">Dragon Warrior IV</h3>
+							<p class="card-description">
+								NES disassembly and documentation for Dragon Warrior IV. 
+								Complete game analysis, data structures, and ROM maps.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-nes">NES</span>
+								<span class="card-tag tag-assembly">6502</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- Ableton SNES SPC -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/ableton-snes-spc" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🎵</span>
+							<h3 class="card-title">SNES SPC Workflow</h3>
+							<p class="card-description">
+								Round-trip SNES music editing with Ableton Live integration. 
+								Convert SPC files to editable Ableton projects and back.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+								<span class="card-tag tag-snes">SNES</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- Mesen2 Fork -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/Mesen2" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🕹️</span>
+							<h3 class="card-title">Mesen2 Fork</h3>
+							<p class="card-description">
+								Fork of the Mesen2 emulator with Pansy metadata export support 
+								and enhanced debugging features for ROM hacking workflows.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+								<span>Multi-platform</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- DQ3R Info -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/dq3r-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🏰</span>
+							<h3 class="card-title">DQ3 Remake Info</h3>
+							<p class="card-description">
+								Research and documentation for Dragon Quest III remake. 
+								Data analysis, game mechanics, and reverse engineering notes.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-snes">SNES</span>
+								<span class="card-tag tag-python">Python</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- DQ4R Info -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/dq4r-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🏯</span>
+							<h3 class="card-title">DQ4 Remake Info</h3>
+							<p class="card-description">
+								Dragon Quest IV remake documentation and Poppy build system. 
+								Working SNES ROM compilation from assembly source.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-snes">SNES</span>
+								<span class="card-tag tag-assembly">65816</span>
+							</div>
+						</a>
+					</article>
+					
+					<!-- Logsmall -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/logsmall" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">📝</span>
+							<h3 class="card-title">Logsmall</h3>
+							<p class="card-description">
+								Collection of .NET libraries for Dragon Quest game data extraction 
+								and analysis. Shared utilities across DQ3/DQ4 projects.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+							</div>
+						</a>
+					</article>
+				</div>
+			</section>
+			
+			<!-- ===== QUICK START HOW-TOs ===== -->
+			<section id="howto" class="veg-border-top" style="padding-top: var(--space-8);">
+				<div class="section-header">
+					<h2 class="section-title">
+						<span class="icon">📚</span>
+						Quick Start Guides
+					</h2>
+					<div class="section-divider"></div>
+				</div>
+				
+				<div class="howto-grid">
+					<!-- Disassemble a ROM -->
+					<div class="howto-card">
+						<div class="howto-header">
+							<h4>🌺 Disassemble a ROM with Peony</h4>
+						</div>
+						<div class="howto-content">
+							<ol class="howto-steps">
+								<li>Clone the Peony repository and build with <code>dotnet build</code></li>
+								<li>Run <code>peony disasm game.nes --output src/</code></li>
+								<li>Peony generates annotated assembly files and a Pansy metadata file</li>
+								<li>Open the output in VS Code with Poppy extension for syntax highlighting</li>
+								<li>Edit labels, add comments, and refine the disassembly</li>
+							</ol>
+						</div>
+					</div>
+					
+					<!-- Assemble with Poppy -->
+					<div class="howto-card">
+						<div class="howto-header">
+							<h4>🌷 Build a ROM with Poppy</h4>
+						</div>
+						<div class="howto-content">
+							<ol class="howto-steps">
+								<li>Create a <code>main.pasm</code> file with your assembly code</li>
+								<li>Add <code>.platform nes</code> or <code>.platform snes</code> directive</li>
+								<li>Run <code>poppy build main.pasm --output game.nes</code></li>
+								<li>Poppy validates, assembles, and generates the ROM</li>
+								<li>Test in Mesen2 or your favorite emulator</li>
+							</ol>
+						</div>
+					</div>
+					
+					<!-- Using Pansy Metadata -->
+					<div class="howto-card">
+						<div class="howto-header">
+							<h4>🌼 Share Metadata with Pansy</h4>
+						</div>
+						<div class="howto-content">
+							<ol class="howto-steps">
+								<li>Export labels from Mesen2 using the Pansy export feature</li>
+								<li>Or create a Pansy file programmatically with the C# library</li>
+								<li>Include symbols, comments, cross-refs, and memory regions</li>
+								<li>Share the <code>.pansy</code> file with collaborators</li>
+								<li>Import into Peony, Poppy, or other compatible tools</li>
+							</ol>
+						</div>
+					</div>
+					
+					<!-- Full Roundtrip -->
+					<div class="howto-card">
+						<div class="howto-header">
+							<h4>🔄 Complete Roundtrip Workflow</h4>
+						</div>
+						<div class="howto-content">
+							<ol class="howto-steps">
+								<li>Start with an original ROM and disassemble with Peony</li>
+								<li>Store all analysis data in a Pansy metadata file</li>
+								<li>Edit the source code — fix bugs, add features, translate text</li>
+								<li>Reassemble with Poppy to create a modified ROM</li>
+								<li>Verify byte-identical output (for vanilla) or test your changes</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				
+				<div style="text-align: center; margin-top: var(--space-8);">
+					<a href="pages/howto.html" class="btn btn-primary">
+						<span>📖</span> View All Guides
 					</a>
 				</div>
 			</section>
 			
-			<!-- All Repositories Section -->
-			<section class="section">
-				<h2 class="section-title">📚 Repository Categories</h2>
-				<div class="links-grid">
-					<a href="pages/repositories.html" class="link-card">
-						<h3 class="link-card-title">📋 All Repositories</h3>
-						<p class="link-card-description">Browse all 33+ repositories organized by category</p>
-					</a>
+			<!-- ===== DOCUMENTATION & RESOURCES ===== -->
+			<section id="docs">
+				<div class="section-header">
+					<h2 class="section-title">
+						<span class="icon">📖</span>
+						Documentation & Resources
+					</h2>
+					<div class="section-divider"></div>
+				</div>
+				
+				<div class="cards-grid">
+					<article class="card">
+						<a href="pages/repositories.html" class="card-link">
+							<span class="card-icon">📋</span>
+							<h3 class="card-title">All Repositories</h3>
+							<p class="card-description">
+								Complete list of all 33+ repositories organized by category. 
+								VS Code extensions, game projects, utilities, and more.
+							</p>
+						</a>
+					</article>
 					
-					<a href="https://github.com/TheAnsarya?tab=repositories" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">
-							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-							GitHub Repositories
-						</h3>
-						<p class="link-card-description">View all repositories on GitHub</p>
-					</a>
+					<article class="card">
+						<a href="pages/plans.html" class="card-link">
+							<span class="card-icon">🗺️</span>
+							<h3 class="card-title">Roadmap & Plans</h3>
+							<p class="card-description">
+								Development roadmap, current sprint status, and long-term goals. 
+								Track what's being built and what's coming next.
+							</p>
+						</a>
+					</article>
 					
-					<a href="pages/plans.html" class="link-card">
-						<h3 class="link-card-title">🗺️ Roadmap & Plans</h3>
-						<p class="link-card-description">Current projects, future plans, and development roadmap</p>
-					</a>
+					<article class="card">
+						<a href="pages/issues.html" class="card-link">
+							<span class="card-icon">🐛</span>
+							<h3 class="card-title">Issues & Todos</h3>
+							<p class="card-description">
+								Active issues, bug reports, and feature requests across all projects. 
+								Contribute by picking up an issue!
+							</p>
+						</a>
+					</article>
 					
-					<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">📦 Marketplace</h3>
-						<p class="link-card-description">VS Code extensions and publisher profile</p>
-					</a>
+					<article class="card">
+						<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🧩</span>
+							<h3 class="card-title">VS Code Extensions</h3>
+							<p class="card-description">
+								Browse and install VS Code extensions from the marketplace. 
+								Poppy Assembly and more developer tools.
+							</p>
+						</a>
+					</article>
 				</div>
 			</section>
 			
-			<!-- Quick Links Section -->
-			<section class="section">
-				<h2 class="section-title">🔗 Quick Access</h2>
-				<div class="links-grid">
-					<a href="https://github.com/TheAnsarya/theansarya.github.io" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">
-							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-							This Website's Repo
-						</h3>
-						<p class="link-card-description">Source code for ansarya.com</p>
-					</a>
-					
-					<a href="~docs/custom-domain-setup.html" class="link-card">
-						<h3 class="link-card-title">
-							<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-							Domain Setup Guide
-						</h3>
-						<p class="link-card-description">How we configured ansarya.com with Cloudflare & GitHub Pages</p>
-					</a>
-					
-					<a href="https://github.com/TheAnsarya/GameInfo/issues/170" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">🎯 Active Epic</h3>
-						<p class="link-card-description">SNES Music Editing Workflow - track development progress</p>
-					</a>
-					
-					<a href="https://github.com/TheAnsarya" class="link-card" target="_blank" rel="noopener">
-						<h3 class="link-card-title">📊 GitHub Profile</h3>
-						<p class="link-card-description">3,601+ contributions • Arctic Code Vault Contributor</p>
-					</a>
-				</div>
-			</section>
-			
-			<!-- Focus Areas Section -->
-			<section class="section">
-				<h2 class="section-title">🎯 Development Focus</h2>
-				<div class="features">
-					<div class="feature">
-						<h3>🔧 VS Code Extensions</h3>
-						<p>Professional developer tools including Poppy Assembly and more</p>
-					</div>
-					<div class="feature">
-						<h3>🎮 Retro Game Dev</h3>
-						<p>SNES/NES ROM hacking, disassembly, and game analysis</p>
-					</div>
-					<div class="feature">
-						<h3>🎵 Audio Tools</h3>
-						<p>SNES SPC music editing and Ableton Live integration</p>
-					</div>
-					<div class="feature">
-						<h3>📚 Documentation</h3>
-						<p>Comprehensive guides, disassemblies, and technical references</p>
-					</div>
-					<div class="feature">
-						<h3>🌐 Open Source</h3>
-						<p>All projects open for contributions and community-driven</p>
-					</div>
-					<div class="feature">
-						<h3>🤖 AI-Powered</h3>
-						<p>Built with GitHub Copilot for enhanced development</p>
-					</div>
-				</div>
-			</section>
-			
-			<!-- Getting Started Section -->
-			<section class="section">
-				<h2 class="section-title">🎯 Explore & Contribute</h2>
-				<div style="background-color: var(--card-bg); padding: 30px; border-radius: var(--border-radius); max-width: 800px; margin: 0 auto;">
-					<h3 style="color: var(--primary-color); margin-bottom: 15px;">For Extension Users</h3>
-					<ol style="line-height: 2; padding-left: 20px;">
-						<li>Browse <a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" style="color: var(--primary-color);">VS Code Marketplace</a></li>
-						<li>Install Poppy Assembly or other extensions</li>
-						<li>Read the documentation</li>
-						<li>Report issues or request features</li>
-						<li>Join the community! 🎉</li>
-					</ol>
-					
-					<h3 style="color: var(--primary-color); margin: 25px 0 15px;">For Contributors</h3>
-					<ol style="line-height: 2; padding-left: 20px;">
-						<li>Check out <a href="pages/repositories.html" style="color: var(--primary-color);">all repositories</a></li>
-						<li>Read CONTRIBUTING.md in each repo</li>
-						<li>Pick an issue or suggest a feature</li>
-						<li>Submit pull requests</li>
-						<li>Share your expertise!</li>
-					</ol>
-					
-					<h3 style="color: var(--primary-color); margin: 25px 0 15px;">For ROM Hackers</h3>
-					<p>Explore our <a href="https://github.com/TheAnsarya/ffmq-info" target="_blank" style="color: var(--primary-color);">game disassemblies</a>, use our <a href="https://github.com/TheAnsarya/subrom" target="_blank" style="color: var(--primary-color);">ROM tools</a>, and check the <a href="https://github.com/TheAnsarya/ableton-snes-spc" target="_blank" style="color: var(--primary-color);">music workflow</a> for SNES development.</p>
-				</div>
-			</section>
 		</div>
 	</main>
 	
 	<footer>
-		<div class="container">
-			<p>&copy; 2026 <a href="https://github.com/TheAnsarya" target="_blank" rel="noopener">TheAnsarya</a>. All rights reserved.</p>
-			<p style="margin-top: 10px;">
-				<a href="pages/repositories.html">All Repositories</a> • 
-				<a href="pages/plans.html">Roadmap</a> • 
-				<a href="~docs/custom-domain-setup.html">Domain Setup</a> • 
-				<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya" target="_blank" rel="noopener">Marketplace</a> • 
-				<a href="https://github.com/TheAnsarya" target="_blank" rel="noopener">GitHub</a>
+		<div class="container footer-content">
+			<nav class="footer-links">
+				<a href="https://github.com/TheAnsarya">GitHub</a>
+				<a href="https://marketplace.visualstudio.com/publishers/TheAnsarya">Marketplace</a>
+				<a href="pages/repositories.html">Repositories</a>
+				<a href="pages/plans.html">Roadmap</a>
+				<a href="pages/howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya/theansarya.github.io">Source</a>
+			</nav>
+			
+			<p class="footer-copy">
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a>. 
+				All projects open source. Built with 🌿 and ancient code.
 			</p>
+			
+			<div class="footer-decoration" aria-hidden="true">
+				🌿 🦕 🌸 🌿
+			</div>
 		</div>
 	</footer>
 	
-	<!-- Optional: Add analytics or other scripts here -->
 	<script>
-		// Add smooth scrolling
+		// Smooth scrolling for anchor links
 		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-			anchor.addEventListener('click', function (e) {
+			anchor.addEventListener('click', function(e) {
 				e.preventDefault();
 				const target = document.querySelector(this.getAttribute('href'));
 				if (target) {
@@ -485,8 +1280,10 @@
 			});
 		});
 		
-		// Log page view (optional - remove if not needed)
-		console.log('Ansarya page loaded successfully!');
+		// Console easter egg
+		console.log('%c🦕 Ansarya', 'font-size: 24px; font-weight: bold; color: #4a7c4e;');
+		console.log('%cWhere Code Takes Root in Ancient Ground', 'font-style: italic; color: #f4a460;');
+		console.log('Check out our projects: https://github.com/TheAnsarya');
 	</script>
 </body>
 </html>

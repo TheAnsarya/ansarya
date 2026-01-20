@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Ansarya Issues & Todos - Track active development tasks across all projects">
+	<title>📋 Issues & Todos - Ansarya</title>
+	
+	<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	
+	<style>
+		:root {
+			--brown-dark: #2a1f14;
+			--brown-medium: #3d2918;
+			--brown-warm: #5c3d1e;
+			--brown-light: #8b5a2b;
+			--cream-light: #f5e6d3;
+			--cream-medium: #e8d4be;
+			--cream-warm: #d4c4a8;
+			--cream-dark: #c9b896;
+			--green-dark: #2d5432;
+			--green-forest: #3d6b41;
+			--green-fern: #4a7c4e;
+			--green-sage: #6b8e6b;
+			--green-moss: #8fbc8f;
+			--green-vine: #556b2f;
+			--orange-sunset: #f4a460;
+			--orange-rust: #d4874a;
+			--pink-blush: #ffb6c1;
+			--pink-salmon: #ff9f7f;
+			
+			--bg-primary: var(--brown-dark);
+			--bg-secondary: var(--brown-medium);
+			--bg-card: var(--brown-warm);
+			--text-primary: var(--cream-light);
+			--text-secondary: var(--cream-medium);
+			--text-muted: var(--cream-dark);
+			--link-color: var(--green-moss);
+			--border-color: var(--brown-light);
+			
+			--font-heading: 'Libre Baskerville', Georgia, serif;
+			--font-body: 'Space Mono', monospace;
+			
+			--space-4: 1rem;
+			--space-5: 1.5rem;
+			--space-6: 2rem;
+			--space-8: 3rem;
+			--space-10: 4rem;
+			
+			--radius-md: 8px;
+			--radius-lg: 16px;
+		}
+		
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		
+		body {
+			font-family: var(--font-body);
+			line-height: 1.7;
+			color: var(--text-primary);
+			background: var(--bg-primary);
+			min-height: 100vh;
+		}
+		
+		.container { max-width: 1100px; margin: 0 auto; padding: 0 var(--space-5); }
+		
+		/* Navigation */
+		.nav-bar {
+			background: var(--bg-secondary);
+			padding: var(--space-4) 0;
+			border-bottom: 3px solid var(--green-fern);
+		}
+		
+		.nav-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: var(--space-4);
+		}
+		
+		.nav-brand {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+			text-decoration: none;
+			color: var(--cream-light);
+		}
+		
+		.nav-brand img { height: 40px; }
+		.nav-brand span { font-family: var(--font-heading); font-size: 1.25rem; }
+		
+		.nav-links { display: flex; gap: var(--space-5); flex-wrap: wrap; }
+		.nav-links a {
+			color: var(--text-secondary);
+			text-decoration: none;
+			transition: color 0.2s;
+		}
+		.nav-links a:hover { color: var(--cream-light); }
+		
+		/* Page Header */
+		.page-header {
+			text-align: center;
+			padding: var(--space-10) 0 var(--space-8);
+			border-bottom: 2px solid var(--border-color);
+		}
+		
+		.page-header h1 {
+			font-family: var(--font-heading);
+			font-size: 2.5rem;
+			color: var(--cream-light);
+			margin-bottom: var(--space-4);
+		}
+		
+		.page-header p {
+			color: var(--text-muted);
+			max-width: 700px;
+			margin: 0 auto;
+		}
+		
+		/* Main Content */
+		main { padding: var(--space-8) 0; }
+		
+		/* Project Sections */
+		.project-section {
+			margin-bottom: var(--space-8);
+		}
+		
+		.project-header {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+			padding: var(--space-4) var(--space-5);
+			background: var(--bg-secondary);
+			border-left: 4px solid var(--green-fern);
+			margin-bottom: var(--space-5);
+			border-radius: 0 var(--radius-md) var(--radius-md) 0;
+		}
+		
+		.project-header h2 {
+			font-family: var(--font-heading);
+			font-size: 1.4rem;
+			color: var(--cream-light);
+			margin: 0;
+		}
+		
+		.project-header .github-link {
+			margin-left: auto;
+			color: var(--text-muted);
+			text-decoration: none;
+			font-size: 0.85rem;
+		}
+		
+		.project-header .github-link:hover {
+			color: var(--link-color);
+		}
+		
+		/* Issue List */
+		.issue-list {
+			list-style: none;
+		}
+		
+		.issue-item {
+			display: flex;
+			align-items: flex-start;
+			gap: var(--space-4);
+			padding: var(--space-4) var(--space-5);
+			background: var(--bg-card);
+			border: 1px solid var(--border-color);
+			margin-bottom: 8px;
+			border-radius: var(--radius-md);
+			transition: border-color 0.2s;
+		}
+		
+		.issue-item:hover {
+			border-color: var(--green-sage);
+		}
+		
+		/* Priority Badges */
+		.priority {
+			flex-shrink: 0;
+			width: 80px;
+			padding: 4px 8px;
+			border-radius: 4px;
+			font-size: 0.75rem;
+			font-weight: 700;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		
+		.priority-high {
+			background: #8b0000;
+			color: var(--cream-light);
+		}
+		
+		.priority-medium {
+			background: var(--orange-rust);
+			color: var(--cream-light);
+		}
+		
+		.priority-low {
+			background: var(--green-sage);
+			color: var(--brown-dark);
+		}
+		
+		/* Issue Content */
+		.issue-content {
+			flex: 1;
+		}
+		
+		.issue-title {
+			font-weight: 600;
+			color: var(--cream-light);
+			margin-bottom: 4px;
+		}
+		
+		.issue-title a {
+			color: var(--cream-light);
+			text-decoration: none;
+		}
+		
+		.issue-title a:hover {
+			color: var(--link-color);
+		}
+		
+		.issue-desc {
+			font-size: 0.875rem;
+			color: var(--text-muted);
+			margin: 0;
+		}
+		
+		/* Issue Meta */
+		.issue-meta {
+			display: flex;
+			gap: var(--space-4);
+			flex-shrink: 0;
+		}
+		
+		.issue-tag {
+			font-size: 0.7rem;
+			padding: 2px 6px;
+			border-radius: 8px;
+			background: var(--brown-light);
+			color: var(--cream-light);
+		}
+		
+		.tag-feature { background: var(--green-forest); }
+		.tag-bug { background: #8b0000; }
+		.tag-docs { background: var(--cream-warm); color: var(--brown-dark); }
+		.tag-enhancement { background: var(--orange-rust); }
+		
+		/* Summary Stats */
+		.stats-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: var(--space-5);
+			margin-bottom: var(--space-8);
+		}
+		
+		.stat-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border-color);
+			border-radius: var(--radius-lg);
+			padding: var(--space-5);
+			text-align: center;
+		}
+		
+		.stat-number {
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: var(--orange-sunset);
+			display: block;
+		}
+		
+		.stat-label {
+			font-size: 0.875rem;
+			color: var(--text-muted);
+		}
+		
+		/* Completed Section */
+		.completed-section {
+			background: var(--bg-secondary);
+			border-radius: var(--radius-lg);
+			padding: var(--space-5);
+			margin-top: var(--space-8);
+		}
+		
+		.completed-section h2 {
+			font-family: var(--font-heading);
+			font-size: 1.25rem;
+			color: var(--green-moss);
+			margin-bottom: var(--space-5);
+		}
+		
+		.completed-item {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+			padding: var(--space-4) 0;
+			border-bottom: 1px solid var(--border-color);
+			opacity: 0.7;
+		}
+		
+		.completed-item:last-child { border-bottom: none; }
+		
+		.completed-check {
+			color: var(--green-moss);
+			font-size: 1.25rem;
+		}
+		
+		.completed-text {
+			text-decoration: line-through;
+			color: var(--text-muted);
+		}
+		
+		/* Footer */
+		footer {
+			background: var(--bg-secondary);
+			padding: var(--space-6) 0;
+			text-align: center;
+			margin-top: var(--space-10);
+			border-top: 3px solid var(--green-fern);
+		}
+		
+		footer p { color: var(--text-muted); font-size: 0.875rem; margin: 0; }
+		footer a { color: var(--link-color); text-decoration: none; }
+		footer a:hover { text-decoration: underline; }
+		
+		/* Responsive */
+		@media (max-width: 768px) {
+			.nav-content { flex-direction: column; text-align: center; }
+			.page-header h1 { font-size: 2rem; }
+			.issue-item { flex-direction: column; }
+			.issue-meta { margin-top: var(--space-4); }
+			.project-header { flex-direction: column; text-align: center; }
+			.project-header .github-link { margin-left: 0; }
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../index.html" class="nav-brand">
+				<img src="../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../index.html">Home</a>
+				<a href="repositories.html">Repositories</a>
+				<a href="plans.html">Roadmap</a>
+				<a href="howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+	
+	<header class="page-header">
+		<div class="container">
+			<h1>📋 Issues & Todos</h1>
+			<p>
+				Active development tasks, bug reports, and feature requests across all projects. 
+				Track progress and see what's being worked on.
+			</p>
+		</div>
+	</header>
+	
+	<main>
+		<div class="container">
+			
+			<!-- Summary Stats -->
+			<div class="stats-grid">
+				<div class="stat-card">
+					<span class="stat-number">24</span>
+					<span class="stat-label">Active Issues</span>
+				</div>
+				<div class="stat-card">
+					<span class="stat-number">8</span>
+					<span class="stat-label">In Progress</span>
+				</div>
+				<div class="stat-card">
+					<span class="stat-number">47</span>
+					<span class="stat-label">Completed This Month</span>
+				</div>
+				<div class="stat-card">
+					<span class="stat-number">6</span>
+					<span class="stat-label">Active Projects</span>
+				</div>
+			</div>
+			
+			<!-- Poppy Issues -->
+			<section class="project-section">
+				<div class="project-header">
+					<span>🌷</span>
+					<h2>Poppy Assembler</h2>
+					<a href="https://github.com/TheAnsarya/poppy/issues" target="_blank" class="github-link">View on GitHub →</a>
+				</div>
+				<ul class="issue-list">
+					<li class="issue-item">
+						<span class="priority priority-high">High</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Implement SNES LoROM/HiROM bank switching</a></div>
+							<p class="issue-desc">Core feature needed for SNES ROM compilation support</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-feature">feature</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-medium">Medium</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Add macro expansion with parameters</a></div>
+							<p class="issue-desc">Support parameterized macros for cleaner code reuse</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-enhancement">enhancement</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-low">Low</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">VS Code extension syntax highlighting improvements</a></div>
+							<p class="issue-desc">Better highlighting for directives and special symbols</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-enhancement">enhancement</span>
+						</div>
+					</li>
+				</ul>
+			</section>
+			
+			<!-- Peony Issues -->
+			<section class="project-section">
+				<div class="project-header">
+					<span>🌺</span>
+					<h2>Peony Disassembler</h2>
+					<a href="https://github.com/TheAnsarya/peony/issues" target="_blank" class="github-link">View on GitHub →</a>
+				</div>
+				<ul class="issue-list">
+					<li class="issue-item">
+						<span class="priority priority-high">High</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">65816 disassembly mode auto-detection</a></div>
+							<p class="issue-desc">Automatically detect 8/16-bit modes from context</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-feature">feature</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-medium">Medium</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Roundtrip guarantee verification tests</a></div>
+							<p class="issue-desc">Automated tests to verify disassembly roundtrips correctly</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-feature">feature</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-low">Low</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Add Game Boy (Z80-like) CPU support</a></div>
+							<p class="issue-desc">Extend platform support beyond 6502/65816</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-feature">feature</span>
+						</div>
+					</li>
+				</ul>
+			</section>
+			
+			<!-- Pansy Issues -->
+			<section class="project-section">
+				<div class="project-header">
+					<span>🌼</span>
+					<h2>Pansy Metadata</h2>
+					<a href="https://github.com/TheAnsarya/pansy/issues" target="_blank" class="github-link">View on GitHub →</a>
+				</div>
+				<ul class="issue-list">
+					<li class="issue-item">
+						<span class="priority priority-high">High</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Avalonia UI cross-platform editor</a></div>
+							<p class="issue-desc">GUI application for viewing and editing Pansy files</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-feature">feature</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-medium">Medium</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Import from Mesen2 label format</a></div>
+							<p class="issue-desc">Convert existing Mesen labels to Pansy format</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-feature">feature</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-low">Low</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Documentation: File format specification</a></div>
+							<p class="issue-desc">Complete binary format documentation</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-docs">docs</span>
+						</div>
+					</li>
+				</ul>
+			</section>
+			
+			<!-- GameInfo Issues -->
+			<section class="project-section">
+				<div class="project-header">
+					<span>🎮</span>
+					<h2>GameInfo Toolkit</h2>
+					<a href="https://github.com/TheAnsarya/GameInfo/issues" target="_blank" class="github-link">View on GitHub →</a>
+				</div>
+				<ul class="issue-list">
+					<li class="issue-item">
+						<span class="priority priority-medium">Medium</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Testing documentation suite</a></div>
+							<p class="issue-desc">Comprehensive testing guides and API documentation</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-docs">docs</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-medium">Medium</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">DarkRepos Blazor editor improvements</a></div>
+							<p class="issue-desc">Enhanced hex editor and tile viewer</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-enhancement">enhancement</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-low">Low</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Python tool migration to C#</a></div>
+							<p class="issue-desc">Migrate remaining Python tools to .NET</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-enhancement">enhancement</span>
+						</div>
+					</li>
+				</ul>
+			</section>
+			
+			<!-- FFMQ Issues -->
+			<section class="project-section">
+				<div class="project-header">
+					<span>🌲</span>
+					<h2>FFMQ Info</h2>
+					<a href="https://github.com/TheAnsarya/ffmq-info/issues" target="_blank" class="github-link">View on GitHub →</a>
+				</div>
+				<ul class="issue-list">
+					<li class="issue-item">
+						<span class="priority priority-high">High</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Complete disassembly coverage</a></div>
+							<p class="issue-desc">Finish labeling all remaining code sections</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-feature">feature</span>
+						</div>
+					</li>
+					<li class="issue-item">
+						<span class="priority priority-medium">Medium</span>
+						<div class="issue-content">
+							<div class="issue-title"><a href="#">Battle system documentation</a></div>
+							<p class="issue-desc">Document damage formulas and combat mechanics</p>
+						</div>
+						<div class="issue-meta">
+							<span class="issue-tag tag-docs">docs</span>
+						</div>
+					</li>
+				</ul>
+			</section>
+			
+			<!-- Recently Completed -->
+			<section class="completed-section">
+				<h2>✅ Recently Completed</h2>
+				<div class="completed-item">
+					<span class="completed-check">✓</span>
+					<span class="completed-text">GameInfo: Testing documentation suite (14 files)</span>
+				</div>
+				<div class="completed-item">
+					<span class="completed-check">✓</span>
+					<span class="completed-text">Ansarya.com: Complete website redesign</span>
+				</div>
+				<div class="completed-item">
+					<span class="completed-check">✓</span>
+					<span class="completed-text">BPS-Patch: .NET 10 modernization with ArrayPool optimizations</span>
+				</div>
+				<div class="completed-item">
+					<span class="completed-check">✓</span>
+					<span class="completed-text">Pansy: Core library binary format implementation</span>
+				</div>
+				<div class="completed-item">
+					<span class="completed-check">✓</span>
+					<span class="completed-text">DW4 Info: Asset extraction pipeline</span>
+				</div>
+			</section>
+			
+		</div>
+	</main>
+	
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> · 
+				<a href="../index.html">Home</a> · 
+				<a href="repositories.html">Repositories</a> · 
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>
