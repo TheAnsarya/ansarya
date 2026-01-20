@@ -26,6 +26,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/vhs-effect.css">
 
 	<style>
 		/* ==========================================================================
@@ -1362,6 +1363,17 @@
 		console.log('%c🦕 Ansarya', 'font-size: 24px; font-weight: bold; color: #4a7c4e;');
 		console.log('%cWhere Code Takes Root in Ancient Ground', 'font-style: italic; color: #f4a460;');
 		console.log('Check out our projects: https://github.com/TheAnsarya');
+	</script>
+
+	<!-- VHS/CRT Effect -->
+	<script src="assets/vhs-effect.js"></script>
+	<script>
+		VHSEffect.init({
+			intensity: 0.7,
+			showToggle: true,
+			powerOnEffect: true,
+			glitchInterval: 12000
+		});
 	</script>
 </body>
 </html>

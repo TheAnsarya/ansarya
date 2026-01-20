@@ -1,0 +1,375 @@
+/* ==========================================================================
+   🎬 VHS/CRT Effect - Retro TV Aesthetic
+   ========================================================================== */
+
+/**
+ * VHS Effect CSS Component
+ * 
+ * Usage:
+ *   1. Include this CSS file
+ *   2. Add class="vhs-container" to your body or main container
+ *   3. Optionally include vhs-effect.js for dynamic effects
+ * 
+ * CSS Variables (customize in :root):
+ *   --vhs-scanline-opacity: 0.08
+ *   --vhs-noise-opacity: 0.03
+ *   --vhs-flicker-intensity: 0.015
+ *   --vhs-chromatic-offset: 1px
+ *   --vhs-vignette-strength: 0.25
+ *   --vhs-curvature: 2px
+ */
+
+:root {
+	/* VHS Effect Configuration */
+	--vhs-scanline-opacity: 0.08;
+	--vhs-scanline-size: 2px;
+	--vhs-noise-opacity: 0.03;
+	--vhs-flicker-intensity: 0.015;
+	--vhs-chromatic-offset: 1px;
+	--vhs-vignette-strength: 0.25;
+	--vhs-curvature: 3px;
+	--vhs-glow-color: rgba(100, 200, 100, 0.03);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--vhs-flicker-intensity: 0;
+		--vhs-noise-opacity: 0;
+	}
+	
+	.vhs-container::before,
+	.vhs-container::after,
+	.vhs-scanlines,
+	.vhs-noise,
+	.vhs-flicker {
+		animation: none !important;
+	}
+}
+
+/* ==========================================================================
+   VHS Container - Apply to body or main wrapper
+   ========================================================================== */
+
+.vhs-container {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Subtle CRT curvature illusion via border-radius on inner shadow */
+.vhs-container::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: 9998;
+	
+	/* Vignette effect */
+	background: radial-gradient(
+		ellipse at center,
+		transparent 0%,
+		transparent 60%,
+		rgba(0, 0, 0, var(--vhs-vignette-strength)) 100%
+	);
+	
+	/* CRT curvature shadow */
+	box-shadow: inset 0 0 var(--vhs-curvature) rgba(0, 0, 0, 0.3);
+	border-radius: var(--vhs-curvature);
+}
+
+/* Scanlines overlay */
+.vhs-container::after {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: 9999;
+	
+	/* Horizontal scanlines */
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent var(--vhs-scanline-size),
+		rgba(0, 0, 0, var(--vhs-scanline-opacity)) var(--vhs-scanline-size),
+		rgba(0, 0, 0, var(--vhs-scanline-opacity)) calc(var(--vhs-scanline-size) * 2)
+	);
+	
+	/* Subtle green CRT glow */
+	box-shadow: inset 0 0 100px var(--vhs-glow-color);
+}
+
+/* ==========================================================================
+   Scanlines - Alternative standalone element
+   ========================================================================== */
+
+.vhs-scanlines {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: 9999;
+	
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 1px,
+		rgba(0, 0, 0, var(--vhs-scanline-opacity)) 1px,
+		rgba(0, 0, 0, var(--vhs-scanline-opacity)) 2px
+	);
+	
+	animation: vhs-scanline-scroll 8s linear infinite;
+}
+
+@keyframes vhs-scanline-scroll {
+	0% { transform: translateY(0); }
+	100% { transform: translateY(4px); }
+}
+
+/* ==========================================================================
+   Noise/Static Grain
+   ========================================================================== */
+
+.vhs-noise {
+	position: fixed;
+	top: -50%;
+	left: -50%;
+	right: -50%;
+	bottom: -50%;
+	width: 200%;
+	height: 200%;
+	pointer-events: none;
+	z-index: 9997;
+	opacity: var(--vhs-noise-opacity);
+	
+	/* SVG noise pattern */
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+	
+	animation: vhs-noise-shift 0.2s steps(10) infinite;
+}
+
+@keyframes vhs-noise-shift {
+	0%, 100% { transform: translate(0, 0); }
+	10% { transform: translate(-5%, -5%); }
+	20% { transform: translate(5%, 10%); }
+	30% { transform: translate(-10%, 5%); }
+	40% { transform: translate(10%, -5%); }
+	50% { transform: translate(-5%, 10%); }
+	60% { transform: translate(5%, -10%); }
+	70% { transform: translate(-10%, -5%); }
+	80% { transform: translate(10%, 5%); }
+	90% { transform: translate(-5%, -10%); }
+}
+
+/* ==========================================================================
+   Screen Flicker
+   ========================================================================== */
+
+.vhs-flicker {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: 9996;
+	background: transparent;
+	animation: vhs-flicker 0.15s infinite;
+}
+
+@keyframes vhs-flicker {
+	0%, 100% { opacity: 0; }
+	50% { opacity: var(--vhs-flicker-intensity); background: white; }
+}
+
+/* ==========================================================================
+   Chromatic Aberration (Color Bleeding)
+   ========================================================================== */
+
+.vhs-chromatic {
+	position: relative;
+}
+
+.vhs-chromatic::before,
+.vhs-chromatic::after {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.vhs-chromatic::before {
+	color: rgba(255, 0, 0, 0.5);
+	transform: translateX(calc(var(--vhs-chromatic-offset) * -1));
+	mix-blend-mode: screen;
+}
+
+.vhs-chromatic::after {
+	color: rgba(0, 255, 255, 0.5);
+	transform: translateX(var(--vhs-chromatic-offset));
+	mix-blend-mode: screen;
+}
+
+/* ==========================================================================
+   VHS Tracking Glitch
+   ========================================================================== */
+
+.vhs-tracking-glitch {
+	animation: vhs-tracking 4s ease-in-out infinite;
+}
+
+@keyframes vhs-tracking {
+	0%, 95%, 100% {
+		transform: translateX(0);
+		filter: none;
+	}
+	96% {
+		transform: translateX(-2px) skewX(-0.5deg);
+		filter: brightness(1.1) saturate(1.2);
+	}
+	97% {
+		transform: translateX(3px) skewX(0.5deg);
+		filter: brightness(0.9) saturate(0.8);
+	}
+	98% {
+		transform: translateX(-1px);
+		filter: brightness(1.05);
+	}
+}
+
+/* ==========================================================================
+   Horizontal Glitch Line (VHS Tracking Bar)
+   ========================================================================== */
+
+.vhs-tracking-bar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 4px;
+	pointer-events: none;
+	z-index: 10000;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.1) 20%,
+		rgba(255, 255, 255, 0.3) 50%,
+		rgba(255, 255, 255, 0.1) 80%,
+		transparent 100%
+	);
+	opacity: 0;
+	animation: vhs-tracking-bar 8s ease-in-out infinite;
+}
+
+@keyframes vhs-tracking-bar {
+	0%, 90%, 100% {
+		opacity: 0;
+		top: -10px;
+	}
+	92% {
+		opacity: 1;
+		top: 0;
+	}
+	98% {
+		opacity: 1;
+		top: 100%;
+	}
+	99% {
+		opacity: 0;
+		top: 100%;
+	}
+}
+
+/* ==========================================================================
+   CRT Screen Curvature (Advanced)
+   ========================================================================== */
+
+.vhs-crt-curve {
+	border-radius: var(--vhs-curvature);
+	box-shadow: 
+		inset 0 0 60px rgba(0, 0, 0, 0.1),
+		inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Power On Effect
+   ========================================================================== */
+
+.vhs-power-on {
+	animation: vhs-power-on 0.8s ease-out forwards;
+}
+
+@keyframes vhs-power-on {
+	0% {
+		filter: brightness(0) saturate(0);
+		transform: scaleY(0.01) scaleX(0.5);
+	}
+	20% {
+		filter: brightness(2) saturate(0);
+		transform: scaleY(0.01) scaleX(1);
+	}
+	40% {
+		filter: brightness(1.5) saturate(0.5);
+		transform: scaleY(0.5) scaleX(1);
+	}
+	60% {
+		filter: brightness(1.2) saturate(0.8);
+		transform: scaleY(1) scaleX(1);
+	}
+	100% {
+		filter: brightness(1) saturate(1);
+		transform: scaleY(1) scaleX(1);
+	}
+}
+
+/* ==========================================================================
+   Toggle Button (Accessibility)
+   ========================================================================== */
+
+.vhs-toggle {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 10001;
+	padding: 8px 16px;
+	font-family: inherit;
+	font-size: 12px;
+	color: var(--cream-light, #f5e6d3);
+	background: var(--brown-dark, #2a1f14);
+	border: 1px solid var(--green-sage, #6b8e6b);
+	border-radius: 4px;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity 0.2s, transform 0.2s;
+}
+
+.vhs-toggle:hover {
+	opacity: 1;
+	transform: scale(1.05);
+}
+
+.vhs-toggle:active {
+	transform: scale(0.95);
+}
+
+/* ==========================================================================
+   Disabled State
+   ========================================================================== */
+
+.vhs-disabled .vhs-container::before,
+.vhs-disabled .vhs-container::after,
+.vhs-disabled .vhs-scanlines,
+.vhs-disabled .vhs-noise,
+.vhs-disabled .vhs-flicker,
+.vhs-disabled .vhs-tracking-bar {
+	display: none !important;
+}
