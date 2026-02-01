@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Game Garden - Fully disassembled games proving the Flower Toolchain">
+	<title>🌱 Game Garden - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/vhs-effect-lite.css">
+	<link rel="stylesheet" href="../../assets/project-page.css">
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../../index.html" class="nav-brand">
+				<img src="../../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../../index.html">Home</a>
+				<a href="../repositories.html">Repositories</a>
+				<a href="../howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="project-header">
+		<div class="container">
+			<span class="project-icon">🌱</span>
+			<h1>Game Garden</h1>
+			<p class="project-tagline">Fully disassembled games proving the 🌷 Flower Toolchain</p>
+
+			<div class="project-actions">
+				<a href="https://github.com/TheAnsarya/game-garden" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+					<span>⭐</span> View on GitHub
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<section class="project-overview">
+				<h2>Overview</h2>
+				<p>
+					<strong>Game Garden</strong> is a collection of fully disassembled and documented retro
+					games. Each game proves the bidirectional 🌷 Flower Toolchain works end-to-end:
+					disassemble with Peony, store metadata in Pansy, reassemble with Poppy, and get a
+					byte-identical ROM.
+				</p>
+				<p>
+					Beyond proving the toolchain, Game Garden serves as a reference for ROM hackers,
+					researchers, and preservationists. Every game includes extracted assets, comprehensive
+					documentation, and working build scripts.
+				</p>
+			</section>
+
+			<section class="feature-grid">
+				<h2>What's in the Garden?</h2>
+				<div class="features">
+					<div class="feature-card">
+						<span class="feature-icon">📝</span>
+						<h3>Full Source</h3>
+						<p>Complete .pasm source files that reassemble to identical ROMs.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🎨</span>
+						<h3>Extracted Assets</h3>
+						<p>Graphics as PNGs, data as JSON, text with table files.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🌼</span>
+						<h3>Pansy Metadata</h3>
+						<p>Every symbol, comment, and cross-reference in portable format.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">📚</span>
+						<h3>Documentation</h3>
+						<p>ROM maps, RAM maps, data structures, and game mechanics.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="quick-start">
+				<h2>Garden Structure</h2>
+				<div class="code-block">
+					<pre><code>game-garden/
+├── games/
+│   ├── nes/
+│   │   ├── dragon-warrior/
+│   │   ├── dragon-warrior-4/
+│   │   └── ...
+│   ├── snes/
+│   │   ├── ffmq/
+│   │   └── ...
+│   └── gb/
+│       └── ...
+├── tools/
+│   ├── verify-rom.py
+│   ├── extract-assets.py
+│   └── build-game.ps1
+└── docs/
+    └── ...</code></pre>
+				</div>
+				<h3>Game Project Structure</h3>
+				<div class="code-block">
+					<pre><code>games/nes/dragon-warrior-4/
+├── README.md           # Status, notes, links
+├── build.ps1           # Build script (uses Poppy)
+├── verify/             # ROM checksums and verification
+├── src/                # Disassembled source (.pasm)
+├── metadata/           # Pansy files
+├── assets/             # Graphics, data, text
+│   ├── editable/       # PNGs, JSONs, TXTs
+│   └── binary/         # Converted for building
+└── docs/               # ROM/RAM maps, data structures</code></pre>
+				</div>
+			</section>
+
+			<section class="toolchain-context">
+				<h2>The Roundtrip Promise</h2>
+				<div class="toolchain-flow">
+					<div class="tool-box">
+						<span class="icon">💾</span>
+						<h4>ROM</h4>
+						<p>Original</p>
+					</div>
+					<span class="flow-arrow">→</span>
+					<a href="peony.html" class="tool-box">
+						<span class="icon">🌺</span>
+						<h4>Peony</h4>
+						<p>Disassemble</p>
+					</a>
+					<span class="flow-arrow">→</span>
+					<div class="tool-box current">
+						<span class="icon">🌱</span>
+						<h4>Garden</h4>
+						<p>Edit</p>
+					</div>
+					<span class="flow-arrow">→</span>
+					<a href="poppy.html" class="tool-box">
+						<span class="icon">🌸</span>
+						<h4>Poppy</h4>
+						<p>Assemble</p>
+					</a>
+					<span class="flow-arrow">→</span>
+					<div class="tool-box">
+						<span class="icon">✅</span>
+						<h4>ROM</h4>
+						<p>Identical</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="project-meta">
+				<h2>Project Info</h2>
+				<dl class="meta-list">
+					<dt>Source Format</dt>
+					<dd>.pasm (Poppy Assembly)</dd>
+					<dt>License</dt>
+					<dd>MIT (code/tools only)</dd>
+					<dt>Platforms</dt>
+					<dd>NES, SNES, Game Boy</dd>
+					<dt>Build Tool</dt>
+					<dd>🌸 Poppy (exclusively)</dd>
+				</dl>
+			</section>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../../index.html">Home</a> ·
+				<a href="https://github.com/TheAnsarya/game-garden" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="../../assets/vhs-effect-lite.js"></script>
+	<script>VHSEffect.init();</script>
+</body>
+</html>

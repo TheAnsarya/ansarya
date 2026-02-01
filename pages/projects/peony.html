@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Peony Disassembler - Convert ROM binaries back into editable source code">
+	<title>🌺 Peony Disassembler - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/vhs-effect-lite.css">
+	<link rel="stylesheet" href="../../assets/project-page.css">
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../../index.html" class="nav-brand">
+				<img src="../../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../../index.html">Home</a>
+				<a href="../repositories.html">Repositories</a>
+				<a href="../howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="project-header">
+		<div class="container">
+			<span class="project-icon">🌺</span>
+			<h1>Peony Disassembler</h1>
+			<p class="project-tagline">Convert ROM binaries back into editable source code</p>
+
+			<div class="project-actions">
+				<a href="https://github.com/TheAnsarya/peony" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+					<span>⭐</span> View on GitHub
+				</a>
+				<a href="https://github.com/TheAnsarya/peony/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+					<span>📦</span> Releases
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<section class="project-overview">
+				<h2>Overview</h2>
+				<p>
+					<strong>Peony</strong> is a multi-system disassembler framework—the "anti-Poppy" that converts
+					ROM binaries back into source code. It's designed for ROM hackers, reverse engineers, and
+					preservationists who want to understand and modify classic games.
+				</p>
+				<p>
+					The killer feature is the <em>roundtrip guarantee</em>: disassemble a ROM with Peony,
+					reassemble with Poppy, and get a byte-identical ROM every time. No guesswork, no
+					hand-tweaking—just clean, reproducible disassembly.
+				</p>
+			</section>
+
+			<section class="feature-grid">
+				<h2>Features</h2>
+				<div class="features">
+					<div class="feature-card">
+						<span class="feature-icon">🔄</span>
+						<h3>Roundtrip Guarantee</h3>
+						<p>Disassembly reassembles to byte-identical ROMs. Verified automatically.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🎯</span>
+						<h3>Smart Analysis</h3>
+						<p>Automatic code/data detection, jump target identification, and label generation.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🌼</span>
+						<h3>Pansy Export</h3>
+						<p>Generate Pansy metadata files with symbols, comments, and cross-references.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">📝</span>
+						<h3>Clean Output</h3>
+						<p>Human-readable .pasm files ready for editing in VS Code with Poppy extension.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="quick-start">
+				<h2>Quick Start</h2>
+				<div class="terminal-block">
+					<pre><code>$ peony disasm game.nes --output src/ --metadata game.pansy
+Peony Disassembler v1.0.0
+Analyzing: game.nes (262144 bytes)
+Platform: NES
+Detected: 16 PRG banks, 8 CHR banks
+
+Analyzing code flow...
+Found: 847 subroutines, 2341 labels
+Generating output...
+
+✓ Disassembly complete
+  Source: src/main.pasm (+ 16 bank files)
+  Metadata: game.pansy (847 symbols)</code></pre>
+				</div>
+			</section>
+
+			<section class="toolchain-context">
+				<h2>Part of the 🌷 Flower Toolchain</h2>
+				<div class="toolchain-flow">
+					<div class="tool-box current">
+						<span class="icon">🌺</span>
+						<h4>Peony</h4>
+						<p>Disassembler</p>
+					</div>
+					<span class="flow-arrow">→</span>
+					<a href="pansy.html" class="tool-box">
+						<span class="icon">🌼</span>
+						<h4>Pansy</h4>
+						<p>Metadata</p>
+					</a>
+					<span class="flow-arrow">→</span>
+					<a href="poppy.html" class="tool-box">
+						<span class="icon">🌸</span>
+						<h4>Poppy</h4>
+						<p>Assembler</p>
+					</a>
+				</div>
+			</section>
+
+			<section class="project-meta">
+				<h2>Project Info</h2>
+				<dl class="meta-list">
+					<dt>Language</dt>
+					<dd>C# (.NET 10)</dd>
+					<dt>License</dt>
+					<dd>MIT</dd>
+					<dt>Platforms</dt>
+					<dd>NES (6502), SNES (65816), Game Boy</dd>
+					<dt>Output Format</dt>
+					<dd>.pasm files + .pansy metadata</dd>
+				</dl>
+			</section>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../../index.html">Home</a> ·
+				<a href="https://github.com/TheAnsarya/peony" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="../../assets/vhs-effect-lite.js"></script>
+	<script>VHSEffect.init();</script>
+</body>
+</html>

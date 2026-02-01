@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Pansy Metadata Format - Universal disassembly metadata for sharing symbols and analysis">
+	<title>🌼 Pansy Metadata - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/vhs-effect-lite.css">
+	<link rel="stylesheet" href="../../assets/project-page.css">
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../../index.html" class="nav-brand">
+				<img src="../../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../../index.html">Home</a>
+				<a href="../repositories.html">Repositories</a>
+				<a href="../howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="project-header">
+		<div class="container">
+			<span class="project-icon">🌼</span>
+			<h1>Pansy Metadata</h1>
+			<p class="project-tagline">Universal disassembly metadata format for sharing symbols and analysis</p>
+
+			<div class="project-actions">
+				<a href="https://github.com/TheAnsarya/pansy" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+					<span>⭐</span> View on GitHub
+				</a>
+				<a href="https://github.com/TheAnsarya/pansy/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+					<span>📦</span> Releases
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<section class="project-overview">
+				<h2>Overview</h2>
+				<p>
+					<strong>Pansy</strong> is a universal disassembly metadata format and toolkit. It stores
+					all the knowledge you accumulate while analyzing a ROM—symbols, comments, cross-references,
+					memory regions—in a portable binary format that any tool can read.
+				</p>
+				<p>
+					Think of Pansy as the "glue" in the 🌷 Flower Toolchain: Peony exports Pansy files,
+					Poppy imports them for building, and Nexen reads/writes them for live debugging.
+					Share your disassembly progress with collaborators using a single <code>.pansy</code> file.
+				</p>
+			</section>
+
+			<section class="feature-grid">
+				<h2>Features</h2>
+				<div class="features">
+					<div class="feature-card">
+						<span class="feature-icon">📁</span>
+						<h3>Portable Format</h3>
+						<p>Compact binary format stores thousands of symbols in kilobytes.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🔗</span>
+						<h3>Cross-References</h3>
+						<p>Track who calls what, who reads/writes memory, and jump destinations.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🖥️</span>
+						<h3>Avalonia UI</h3>
+						<p>Cross-platform GUI for viewing and editing metadata on Windows, macOS, Linux.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🔄</span>
+						<h3>Tool Integration</h3>
+						<p>Import/export for Mesen, FCEUX, DiztinGUIsh, and other common formats.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="quick-start">
+				<h2>What's in a .pansy File?</h2>
+				<div class="code-block">
+					<pre><code>// Pansy file contents:
+- Symbols:        Address → Name mappings (labels, variables)
+- Comments:       Address → Annotation text
+- Code Offsets:   Addresses marked as executable code
+- Data Offsets:   Addresses marked as data
+- Jump Targets:   Branch/jump destination addresses
+- Entry Points:   Subroutine start addresses
+- Memory Regions: Named memory areas with types
+- Cross-Refs:     Who references what (call, jump, read, write)</code></pre>
+				</div>
+			</section>
+
+			<section class="toolchain-context">
+				<h2>Part of the 🌷 Flower Toolchain</h2>
+				<div class="toolchain-flow">
+					<a href="peony.html" class="tool-box">
+						<span class="icon">🌺</span>
+						<h4>Peony</h4>
+						<p>Disassembler</p>
+					</a>
+					<span class="flow-arrow">→</span>
+					<div class="tool-box current">
+						<span class="icon">🌼</span>
+						<h4>Pansy</h4>
+						<p>Metadata</p>
+					</div>
+					<span class="flow-arrow">→</span>
+					<a href="poppy.html" class="tool-box">
+						<span class="icon">🌸</span>
+						<h4>Poppy</h4>
+						<p>Assembler</p>
+					</a>
+				</div>
+			</section>
+
+			<section class="project-meta">
+				<h2>Project Info</h2>
+				<dl class="meta-list">
+					<dt>Language</dt>
+					<dd>C# (.NET 10)</dd>
+					<dt>License</dt>
+					<dd>MIT</dd>
+					<dt>GUI Framework</dt>
+					<dd>Avalonia UI (cross-platform)</dd>
+					<dt>File Extension</dt>
+					<dd>.pansy</dd>
+				</dl>
+			</section>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../../index.html">Home</a> ·
+				<a href="https://github.com/TheAnsarya/pansy" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="../../assets/vhs-effect-lite.js"></script>
+	<script>VHSEffect.init();</script>
+</body>
+</html>

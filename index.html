@@ -893,10 +893,9 @@
 			</div>
 
 			<h1 class="site-title">🦕 Ansarya</h1>
-			<p class="tagline">"Where Code Takes Root in Ancient Ground"</p>
+			<p class="tagline">"Digging Up the Past, One Byte at a Time"</p>
 			<p class="subtitle">
-				Assembly compilers, disassemblers, and ROM hacking tools for retro gaming platforms.
-				Building the future on the foundations of the past.
+				From flowery assemblers to a dinosaur-powered emulator—these tools bring depth to game documentation and preservation.
 			</p>
 
 			<nav class="nav-buttons">
@@ -979,18 +978,19 @@
 				</div>
 
 				<div class="cards-grid">
+					<!-- ===== THE FLOWERS (Toolchain Components) ===== -->
+
 					<!-- Poppy -->
 					<article class="card">
-						<a href="https://github.com/TheAnsarya/poppy" class="card-link" target="_blank" rel="noopener">
+						<a href="pages/projects/poppy.html" class="card-link">
 							<span class="card-icon">🌸</span>
-							<h3 class="card-title">Poppy Assembly</h3>
+							<h3 class="card-title">Poppy Assembler</h3>
 							<p class="card-description">
-								Multi-system assembly compiler targeting NES, SNES, and Game Boy.
-								Includes VS Code extension with syntax highlighting, IntelliSense, and debugging support.
+								Compile assembly source into ROMs for NES, SNES, and Game Boy.
+								One assembler for all retro platforms with VS Code integration.
 							</p>
 							<div class="card-meta">
 								<span class="card-tag tag-csharp">C#</span>
-								<span class="card-tag tag-typescript">TypeScript</span>
 								<span class="card-tag tag-assembly">6502/65816</span>
 							</div>
 						</a>
@@ -998,12 +998,12 @@
 
 					<!-- Peony -->
 					<article class="card">
-						<a href="https://github.com/TheAnsarya/peony" class="card-link" target="_blank" rel="noopener">
+						<a href="pages/projects/peony.html" class="card-link">
 							<span class="card-icon">🌺</span>
 							<h3 class="card-title">Peony Disassembler</h3>
 							<p class="card-description">
-								Multi-system disassembler framework — the "anti-Poppy" that converts ROM binaries
-								back into source code with full roundtrip support.
+								Turn ROMs back into editable source code. The "anti-Poppy" with
+								guaranteed roundtrip accuracy—disassemble and reassemble to identical bytes.
 							</p>
 							<div class="card-meta">
 								<span class="card-tag tag-csharp">C#</span>
@@ -1014,16 +1014,81 @@
 
 					<!-- Pansy -->
 					<article class="card">
-						<a href="https://github.com/TheAnsarya/pansy" class="card-link" target="_blank" rel="noopener">
+						<a href="pages/projects/pansy.html" class="card-link">
 							<span class="card-icon">🌼</span>
 							<h3 class="card-title">Pansy Metadata</h3>
 							<p class="card-description">
-								Universal disassembly metadata format and toolkit. Store symbols, comments,
-								cross-references, and memory regions in a portable binary format.
+								Share disassembly knowledge with a universal metadata format.
+								Store labels, comments, and cross-references in portable files.
 							</p>
 							<div class="card-meta">
 								<span class="card-tag tag-csharp">C#</span>
 								<span>Avalonia UI</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- ===== PROGRAMS & UTILITIES ===== -->
+
+					<!-- Nexen Emulator -->
+					<article class="card">
+						<a href="pages/projects/nexen.html" class="card-link">
+							<span class="card-icon">🦕</span>
+							<h3 class="card-title">Nexen Emulator</h3>
+							<p class="card-description">
+								Multi-system emulator with deep Pansy integration for ROM hacking workflows.
+								Export labels, trace execution, and analyze games with powerful debugging tools.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C++/C#</span>
+								<span>7 Systems</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- BPS Patch -->
+					<article class="card">
+						<a href="pages/projects/bps-patch.html" class="card-link">
+							<span class="card-icon">🩹</span>
+							<h3 class="card-title">BPS Patch Library</h3>
+							<p class="card-description">
+								Create and apply ROM patches using the BPS format.
+								High-performance .NET library with optimized algorithms for fast patching.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C# .NET 10</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- Ableton SPC Plugin -->
+					<article class="card">
+						<a href="pages/projects/ableton-spc.html" class="card-link">
+							<span class="card-icon">🎵</span>
+							<h3 class="card-title">Ableton SPC Plugin</h3>
+							<p class="card-description">
+								Edit SNES music in Ableton Live. Extract SPC files to DAW projects,
+								make changes with familiar tools, and export back to playable game audio.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C#</span>
+								<span class="card-tag tag-snes">VST3</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- Subrom -->
+					<article class="card">
+						<a href="pages/projects/subrom.html" class="card-link">
+							<span class="card-icon">💿</span>
+							<h3 class="card-title">Subrom ROM Manager</h3>
+							<p class="card-description">
+								Organize and verify your ROM collection. Web-based interface with
+								No-Intro DAT support, hash verification, and offline drive scanning.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-csharp">C# .NET 10</span>
+								<span>React 19</span>
 							</div>
 						</a>
 					</article>
@@ -1034,125 +1099,12 @@
 							<span class="card-icon">🎮</span>
 							<h3 class="card-title">GameInfo Toolkit</h3>
 							<p class="card-description">
-								Comprehensive ROM hacking toolkit with .NET 10 CLI tools, Python utilities,
-								and Blazor web editors. Includes DarkRepos wiki content.
+								Swiss army knife for ROM hacking. CLI tools, Python scripts, and
+								web editors for graphics, text, and data extraction.
 							</p>
 							<div class="card-meta">
 								<span class="card-tag tag-csharp">C#</span>
 								<span class="card-tag tag-python">Python</span>
-							</div>
-						</a>
-					</article>
-
-					<!-- FFMQ Info -->
-					<article class="card">
-						<a href="https://github.com/TheAnsarya/ffmq-info" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">⚔️</span>
-							<h3 class="card-title">FFMQ Disassembly</h3>
-							<p class="card-description">
-								Complete disassembly and documentation for Final Fantasy: Mystic Quest (SNES).
-								Includes ROM structure maps, modding guides, and detailed code documentation.
-							</p>
-							<div class="card-meta">
-								<span class="card-tag tag-snes">SNES</span>
-								<span class="card-tag tag-assembly">65816</span>
-								<span>⭐ 4</span>
-							</div>
-						</a>
-					</article>
-
-					<!-- BPS Patch -->
-					<article class="card">
-						<a href="https://github.com/TheAnsarya/bps-patch" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">🩹</span>
-							<h3 class="card-title">BPS Patch Library</h3>
-							<p class="card-description">
-								Modern .NET 10 implementation of the BPS (Binary Patch System) format.
-								High-performance patch creation and application with ArrayPool optimizations.
-							</p>
-							<div class="card-meta">
-								<span class="card-tag tag-csharp">C# .NET 10</span>
-								<span>⭐ 2</span>
-							</div>
-						</a>
-					</article>
-
-					<!-- Dragon Warrior 4 -->
-					<article class="card">
-						<a href="https://github.com/TheAnsarya/dragon-warrior-4-info" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">🐉</span>
-							<h3 class="card-title">Dragon Warrior IV</h3>
-							<p class="card-description">
-								NES disassembly and documentation for Dragon Warrior IV.
-								Complete game analysis, data structures, and ROM maps.
-							</p>
-							<div class="card-meta">
-								<span class="card-tag tag-nes">NES</span>
-								<span class="card-tag tag-assembly">6502</span>
-							</div>
-						</a>
-					</article>
-
-					<!-- Ableton SNES SPC -->
-					<article class="card">
-						<a href="https://github.com/TheAnsarya/ableton-snes-spc" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">🎵</span>
-							<h3 class="card-title">SNES SPC Workflow</h3>
-							<p class="card-description">
-								Round-trip SNES music editing with Ableton Live integration.
-								Convert SPC files to editable Ableton projects and back.
-							</p>
-							<div class="card-meta">
-								<span class="card-tag tag-csharp">C#</span>
-								<span class="card-tag tag-snes">SNES</span>
-							</div>
-						</a>
-					</article>
-
-					<!-- Mesen2 Fork -->
-					<article class="card">
-						<a href="https://github.com/TheAnsarya/Mesen2" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">🕹️</span>
-							<h3 class="card-title">Mesen2 Fork</h3>
-							<p class="card-description">
-								Fork of the Mesen2 emulator with Pansy metadata export support
-								and enhanced debugging features for ROM hacking workflows.
-							</p>
-							<div class="card-meta">
-								<span class="card-tag tag-csharp">C#</span>
-								<span>Multi-platform</span>
-							</div>
-						</a>
-					</article>
-
-					<!-- DQ3R Info -->
-					<article class="card">
-						<a href="https://github.com/TheAnsarya/dq3r-info" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">🏰</span>
-							<h3 class="card-title">DQ3 Remake Info</h3>
-							<p class="card-description">
-								Research and documentation for Dragon Quest III remake.
-								Data analysis, game mechanics, and reverse engineering notes.
-							</p>
-							<div class="card-meta">
-								<span class="card-tag tag-snes">SNES</span>
-								<span class="card-tag tag-python">Python</span>
-							</div>
-						</a>
-					</article>
-
-					<!-- DQ4R Info -->
-					<article class="card">
-						<a href="https://github.com/TheAnsarya/dq4r-info" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">🏯</span>
-							<h3 class="card-title">DQ4 Remake Info</h3>
-							<p class="card-description">
-								Dragon Quest IV remake documentation and Poppy build system.
-								Working SNES ROM compilation from assembly source.
-							</p>
-							<div class="card-meta">
-								<span class="card-tag tag-snes">SNES</span>
-								<span class="card-tag tag-assembly">65816</span>
 							</div>
 						</a>
 					</article>
@@ -1163,23 +1115,39 @@
 							<span class="card-icon">📝</span>
 							<h3 class="card-title">Logsmall</h3>
 							<p class="card-description">
-								Collection of .NET libraries for Dragon Quest game data extraction
-								and analysis. Shared utilities across DQ3/DQ4 projects.
+								Shared .NET libraries for Dragon Quest game data.
+								Handles compression, text encoding, and data formats across multiple DQ titles.
 							</p>
 							<div class="card-meta">
 								<span class="card-tag tag-csharp">C#</span>
 							</div>
 						</a>
 					</article>
+				</div>
+			</section>
 
-					<!-- Game Garden -->
+			<!-- ===== GAME GARDEN ===== -->
+			<section id="game-garden" class="veg-border-top" style="padding-top: var(--space-8);">
+				<div class="section-header">
+					<h2 class="section-title">
+						<span class="icon">🌱</span>
+						Game Garden
+					</h2>
+					<div class="section-divider"></div>
+					<p style="max-width: 700px; margin: var(--space-4) auto 0; text-align: center;">
+						Fully disassembled and documented games. Every game can be reassembled to a byte-identical ROM.
+					</p>
+				</div>
+
+				<div class="cards-grid">
+					<!-- Game Garden Main -->
 					<article class="card">
-						<a href="https://github.com/TheAnsarya/game-garden" class="card-link" target="_blank" rel="noopener">
+						<a href="pages/projects/game-garden.html" class="card-link">
 							<span class="card-icon">🌱</span>
-							<h3 class="card-title">Game Garden</h3>
+							<h3 class="card-title">Game Garden Repository</h3>
 							<p class="card-description">
-								Comprehensive games disassembly, asset extraction, editing, and recompilation.
-								Proves bidirectionality of the 🌷 Flower Toolchain.
+								The master collection of disassembled games. Proves the 🌷 Flower Toolchain
+								works end-to-end: ROM → Source → Edits → ROM.
 							</p>
 							<div class="card-meta">
 								<span class="card-tag tag-assembly">.pasm</span>
@@ -1189,18 +1157,99 @@
 						</a>
 					</article>
 
-					<!-- Subrom -->
+					<!-- FFMQ Info -->
 					<article class="card">
-						<a href="https://github.com/TheAnsarya/subrom" class="card-link" target="_blank" rel="noopener">
-							<span class="card-icon">💿</span>
-							<h3 class="card-title">Subrom ROM Manager</h3>
+						<a href="https://github.com/TheAnsarya/ffmq-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">⚔️</span>
+							<h3 class="card-title">Final Fantasy Mystic Quest</h3>
 							<p class="card-description">
-								Modern ROM collection manager with web UI, DAT parsing, hash verification,
-								and offline drive support. Alternative to RomVault/ClrMame Pro.
+								Complete SNES disassembly with ROM maps, data structures, and
+								comprehensive documentation of game mechanics.
 							</p>
 							<div class="card-meta">
-								<span class="card-tag tag-csharp">C# .NET 10</span>
-								<span>React 19</span>
+								<span class="card-tag tag-snes">SNES</span>
+								<span class="card-tag tag-assembly">65816</span>
+								<span>⭐ 4</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- Dragon Warrior 4 -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/dragon-warrior-4-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🐉</span>
+							<h3 class="card-title">Dragon Warrior IV (NES)</h3>
+							<p class="card-description">
+								Full NES disassembly documenting all game systems, data tables,
+								and the complex chapter-based story structure.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-nes">NES</span>
+								<span class="card-tag tag-assembly">6502</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- Dragon Warrior Info -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/dragon-warrior-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🗡️</span>
+							<h3 class="card-title">Dragon Warrior Series</h3>
+							<p class="card-description">
+								Research and documentation spanning the Dragon Warrior/Quest series.
+								Formulas, mechanics, and data format comparisons across titles.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-nes">NES</span>
+								<span class="card-tag tag-snes">SNES</span>
+							</div>
+						</a>
+					</article>
+				</div>
+			</section>
+
+			<!-- ===== POTTED PLANTS (Game Hacks & Remakes) ===== -->
+			<section id="potted-plants" class="veg-border-top" style="padding-top: var(--space-8);">
+				<div class="section-header">
+					<h2 class="section-title">
+						<span class="icon">🪴</span>
+						Potted Plants
+					</h2>
+					<div class="section-divider"></div>
+					<p style="max-width: 700px; margin: var(--space-4) auto 0; text-align: center;">
+						Comprehensive game hacks and fan remakes grown from the disassembly work.
+					</p>
+				</div>
+
+				<div class="cards-grid">
+					<!-- DQ4R Info -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/dq4r-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🏯</span>
+							<h3 class="card-title">Dragon Quest IV Remake</h3>
+							<p class="card-description">
+								SNES remake of Dragon Warrior IV with enhanced graphics, expanded content,
+								and quality-of-life improvements. Builds with 🌸 Poppy.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-snes">SNES</span>
+								<span class="card-tag tag-assembly">65816</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- DQ3R Info -->
+					<article class="card">
+						<a href="https://github.com/TheAnsarya/dq3r-info" class="card-link" target="_blank" rel="noopener">
+							<span class="card-icon">🏰</span>
+							<h3 class="card-title">Dragon Quest III Research</h3>
+							<p class="card-description">
+								Active research into the SNES Dragon Quest III for documentation
+								and potential enhancement projects.
+							</p>
+							<div class="card-meta">
+								<span class="card-tag tag-snes">SNES</span>
+								<span class="card-tag tag-python">Python</span>
 							</div>
 						</a>
 					</article>
@@ -1394,7 +1443,7 @@
 
 		// Console easter egg
 		console.log('%c🦕 Ansarya', 'font-size: 24px; font-weight: bold; color: #4a7c4e;');
-		console.log('%cWhere Code Takes Root in Ancient Ground', 'font-style: italic; color: #f4a460;');
+		console.log('%cDigging Up the Past, One Byte at a Time', 'font-style: italic; color: #f4a460;');
 		console.log('Check out our projects: https://github.com/TheAnsarya');
 	</script>
 

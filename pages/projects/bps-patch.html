@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="BPS Patch Library - High-performance binary patching for ROM hacking">
+	<title>🩹 BPS Patch Library - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/vhs-effect-lite.css">
+	<link rel="stylesheet" href="../../assets/project-page.css">
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../../index.html" class="nav-brand">
+				<img src="../../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../../index.html">Home</a>
+				<a href="../repositories.html">Repositories</a>
+				<a href="../howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="project-header">
+		<div class="container">
+			<span class="project-icon">🩹</span>
+			<h1>BPS Patch Library</h1>
+			<p class="project-tagline">High-performance binary patching for ROM distribution</p>
+
+			<div class="project-actions">
+				<a href="https://github.com/TheAnsarya/bps-patch" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+					<span>⭐</span> View on GitHub
+				</a>
+				<a href="https://www.nuget.org/packages/BpsPatch" class="btn btn-secondary" target="_blank" rel="noopener">
+					<span>📦</span> NuGet Package
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<section class="project-overview">
+				<h2>Overview</h2>
+				<p>
+					<strong>BPS Patch</strong> is a modern .NET 10 implementation of the BPS (Binary Patch System)
+					format—the standard way to distribute ROM hacks. Create patches that transform an original
+					ROM into a modified version without distributing copyrighted content.
+				</p>
+				<p>
+					This library focuses on performance: SA-IS suffix arrays for optimal match detection,
+					ArrayPool memory management to reduce GC pressure, and multiple algorithm choices for
+					different file sizes.
+				</p>
+			</section>
+
+			<section class="feature-grid">
+				<h2>Features</h2>
+				<div class="features">
+					<div class="feature-card">
+						<span class="feature-icon">⚡</span>
+						<h3>Fast Algorithms</h3>
+						<p>SA-IS suffix arrays, Rabin-Karp rolling hash, or linear scan based on file size.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">📉</span>
+						<h3>Small Patches</h3>
+						<p>Lazy matching and cost-based selection produce optimally small patch files.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🔒</span>
+						<h3>CRC Validation</h3>
+						<p>Built-in CRC32 verification ensures correct source ROMs and successful application.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">💻</span>
+						<h3>CLI & Library</h3>
+						<p>Use as a command-line tool or integrate directly into your .NET projects.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="quick-start">
+				<h2>Quick Start</h2>
+				<div class="terminal-block">
+					<pre><code>$ bps-patch encode original.sfc modified.sfc patch.bps
+BPS Patch Encoder v1.0.0
+Source: original.sfc (2097152 bytes)
+Target: modified.sfc (2097152 bytes)
+Algorithm: SuffixArray (auto-selected)
+
+Analyzing differences...
+Encoding patch...
+
+✓ Patch created: patch.bps (12847 bytes)
+  Compression ratio: 99.4%
+
+$ bps-patch decode original.sfc patch.bps output.sfc
+BPS Patch Decoder v1.0.0
+Applying patch...
+✓ CRC32 verified: output matches target</code></pre>
+				</div>
+				<h3>Library Usage</h3>
+				<div class="code-block">
+					<pre><code class="language-csharp">using BpsPatch.Core;
+
+// Create a patch
+BpsEncoder.CreatePatch(
+	new FileInfo("original.sfc"),
+	new FileInfo("modified.sfc"),
+	new FileInfo("patch.bps"),
+	"My ROM Hack v1.0");
+
+// Apply a patch
+var result = BpsDecoder.ApplyPatch(
+	new FileInfo("original.sfc"),
+	new FileInfo("patch.bps"),
+	new FileInfo("output.sfc"));</code></pre>
+				</div>
+			</section>
+
+			<section class="project-meta">
+				<h2>Project Info</h2>
+				<dl class="meta-list">
+					<dt>Language</dt>
+					<dd>C# (.NET 10)</dd>
+					<dt>License</dt>
+					<dd>MIT</dd>
+					<dt>NuGet</dt>
+					<dd>BpsPatch.Core</dd>
+					<dt>Algorithms</dt>
+					<dd>SA-IS, Rabin-Karp, Linear</dd>
+				</dl>
+			</section>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../../index.html">Home</a> ·
+				<a href="https://github.com/TheAnsarya/bps-patch" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="../../assets/vhs-effect-lite.js"></script>
+	<script>VHSEffect.init();</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Subrom ROM Manager - Modern ROM collection manager with web UI">
+	<title>💿 Subrom ROM Manager - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/vhs-effect-lite.css">
+	<link rel="stylesheet" href="../../assets/project-page.css">
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../../index.html" class="nav-brand">
+				<img src="../../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../../index.html">Home</a>
+				<a href="../repositories.html">Repositories</a>
+				<a href="../howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="project-header">
+		<div class="container">
+			<span class="project-icon">💿</span>
+			<h1>Subrom ROM Manager</h1>
+			<p class="project-tagline">Modern ROM collection manager with web interface</p>
+
+			<div class="project-actions">
+				<a href="https://github.com/TheAnsarya/subrom" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+					<span>⭐</span> View on GitHub
+				</a>
+				<a href="https://github.com/TheAnsarya/subrom/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+					<span>📦</span> Releases
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<section class="project-overview">
+				<h2>Overview</h2>
+				<p>
+					<strong>Subrom</strong> is a modern ROM collection manager with a web-based interface.
+					Think RomVault or ClrMame Pro, but with a React UI, real-time progress updates via
+					SignalR, and support for offline drives and network storage.
+				</p>
+				<p>
+					Verify your collection against No-Intro, TOSEC, or GoodTools DAT files. See exactly
+					which ROMs you have, which are missing, and which need to be renamed or moved.
+				</p>
+			</section>
+
+			<section class="feature-grid">
+				<h2>Features</h2>
+				<div class="features">
+					<div class="feature-card">
+						<span class="feature-icon">🌐</span>
+						<h3>Web Interface</h3>
+						<p>Modern React 19 UI with virtualized lists for 60K+ entry DAT files.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">✅</span>
+						<h3>DAT Verification</h3>
+						<p>Import No-Intro, TOSEC, and GoodTools DAT files for collection verification.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">💾</span>
+						<h3>Offline Drives</h3>
+						<p>Track ROMs on removable drives that aren't always connected.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">📊</span>
+						<h3>Real-Time Progress</h3>
+						<p>SignalR streaming shows scan progress as it happens.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="quick-start">
+				<h2>Architecture</h2>
+				<div class="code-block">
+					<pre><code>Backend: .NET 10 Web API + SignalR
+Frontend: React 19 + TypeScript + Vite
+Database: EF Core + SQLite
+State: Zustand stores
+
+Features:
+├── DAT file parsing (XML/CLRMamePro formats)
+├── Hash calculation (CRC32, MD5, SHA256)
+├── Header detection (iNES, SNES, etc.)
+├── Collection scanning with progress
+└── Verification reports</code></pre>
+				</div>
+			</section>
+
+			<section class="project-meta">
+				<h2>Project Info</h2>
+				<dl class="meta-list">
+					<dt>Backend</dt>
+					<dd>C# .NET 10 Web API</dd>
+					<dt>Frontend</dt>
+					<dd>React 19 + TypeScript + Vite</dd>
+					<dt>License</dt>
+					<dd>MIT</dd>
+					<dt>Database</dt>
+					<dd>SQLite via EF Core</dd>
+				</dl>
+			</section>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../../index.html">Home</a> ·
+				<a href="https://github.com/TheAnsarya/subrom" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="../../assets/vhs-effect-lite.js"></script>
+	<script>VHSEffect.init();</script>
+</body>
+</html>

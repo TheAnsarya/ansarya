@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Poppy Assembler - Multi-system assembly compiler for NES, SNES, and Game Boy">
+	<title>🌸 Poppy Assembler - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/vhs-effect-lite.css">
+	<link rel="stylesheet" href="../../assets/project-page.css">
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../../index.html" class="nav-brand">
+				<img src="../../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../../index.html">Home</a>
+				<a href="../repositories.html">Repositories</a>
+				<a href="../howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="project-header">
+		<div class="container">
+			<span class="project-icon">🌸</span>
+			<h1>Poppy Assembler</h1>
+			<p class="project-tagline">Multi-system assembly compiler for retro game development</p>
+
+			<div class="project-actions">
+				<a href="https://github.com/TheAnsarya/poppy" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+					<span>⭐</span> View on GitHub
+				</a>
+				<a href="https://github.com/TheAnsarya/poppy/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+					<span>📦</span> Releases
+				</a>
+				<a href="https://marketplace.visualstudio.com/items?itemName=TheAnsarya.poppy-assembly" class="btn btn-accent" target="_blank" rel="noopener">
+					<span>🧩</span> VS Code Extension
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<section class="project-overview">
+				<h2>Overview</h2>
+				<p>
+					<strong>Poppy</strong> is a multi-system assembly compiler that targets classic gaming platforms
+					including NES (6502), SNES (65816), and Game Boy. It's the "assembly" half of the
+					🌷 Flower Toolchain, designed to work hand-in-hand with Peony (disassembler) and
+					Pansy (metadata format).
+				</p>
+				<p>
+					The goal is simple: <em>one assembler for all retro platforms</em>. Write your code
+					in <code>.pasm</code> files, and Poppy compiles them into working ROMs that run on
+					real hardware or emulators.
+				</p>
+			</section>
+
+			<section class="feature-grid">
+				<h2>Features</h2>
+				<div class="features">
+					<div class="feature-card">
+						<span class="feature-icon">🎮</span>
+						<h3>Multi-Platform</h3>
+						<p>NES, SNES, and Game Boy support with platform-specific directives and bank switching.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🔄</span>
+						<h3>Roundtrip Ready</h3>
+						<p>Designed to reassemble Peony disassembly output to byte-identical ROMs.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">💻</span>
+						<h3>VS Code Integration</h3>
+						<p>Full extension with syntax highlighting, error checking, and IntelliSense.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🌼</span>
+						<h3>Pansy Support</h3>
+						<p>Import and export metadata, labels, and comments in Pansy format.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="quick-start">
+				<h2>Quick Start</h2>
+				<div class="code-block">
+					<pre><code class="language-asm">; hello.pasm - NES Hello World
+.platform nes
+.org $8000
+
+reset:
+	sei
+	cld
+	ldx #$ff
+	txs
+	; ... initialization code
+
+.org $fffa
+.word nmi_handler
+.word reset
+.word irq_handler</code></pre>
+				</div>
+				<div class="terminal-block">
+					<pre><code>$ poppy build hello.pasm --output hello.nes
+Poppy Assembler v1.0.0
+Building: hello.pasm
+Platform: NES
+Output: hello.nes (40976 bytes)
+✓ Build successful</code></pre>
+				</div>
+			</section>
+
+			<section class="toolchain-context">
+				<h2>Part of the 🌷 Flower Toolchain</h2>
+				<div class="toolchain-flow">
+					<a href="peony.html" class="tool-box">
+						<span class="icon">🌺</span>
+						<h4>Peony</h4>
+						<p>Disassembler</p>
+					</a>
+					<span class="flow-arrow">→</span>
+					<a href="pansy.html" class="tool-box">
+						<span class="icon">🌼</span>
+						<h4>Pansy</h4>
+						<p>Metadata</p>
+					</a>
+					<span class="flow-arrow">→</span>
+					<div class="tool-box current">
+						<span class="icon">🌸</span>
+						<h4>Poppy</h4>
+						<p>Assembler</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="project-meta">
+				<h2>Project Info</h2>
+				<dl class="meta-list">
+					<dt>Language</dt>
+					<dd>C# (.NET 10)</dd>
+					<dt>License</dt>
+					<dd>MIT</dd>
+					<dt>Platforms</dt>
+					<dd>NES (6502), SNES (65816), Game Boy</dd>
+					<dt>VS Code Extension</dt>
+					<dd>TypeScript + TextMate Grammar</dd>
+				</dl>
+			</section>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../../index.html">Home</a> ·
+				<a href="https://github.com/TheAnsarya/poppy" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="../../assets/vhs-effect-lite.js"></script>
+	<script>VHSEffect.init();</script>
+</body>
+</html>

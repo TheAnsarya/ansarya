@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Nexen Emulator - Multi-system emulator with deep Pansy integration for ROM hacking">
+	<title>🦕 Nexen Emulator - Ansarya</title>
+
+	<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/vhs-effect-lite.css">
+	<link rel="stylesheet" href="../../assets/project-page.css">
+</head>
+<body>
+	<nav class="nav-bar">
+		<div class="container nav-content">
+			<a href="../../index.html" class="nav-brand">
+				<img src="../../assets/favicon.svg" alt="Ansarya">
+				<span>🦕 Ansarya</span>
+			</a>
+			<div class="nav-links">
+				<a href="../../index.html">Home</a>
+				<a href="../repositories.html">Repositories</a>
+				<a href="../howto.html">How-To</a>
+				<a href="https://github.com/TheAnsarya" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="project-header">
+		<div class="container">
+			<span class="project-icon">🦕</span>
+			<h1>Nexen Emulator</h1>
+			<p class="project-tagline">Multi-system emulator with deep ROM hacking integration</p>
+
+			<div class="project-actions">
+				<a href="https://github.com/TheAnsarya/Nexen" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+					<span>⭐</span> View on GitHub
+				</a>
+				<a href="https://github.com/TheAnsarya/Nexen/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+					<span>📦</span> Releases
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<section class="project-overview">
+				<h2>Overview</h2>
+				<p>
+					<strong>Nexen</strong> is a multi-system emulator built for ROM hackers and game researchers.
+					Based on the excellent Mesen2 codebase, Nexen adds deep integration with the 🌷 Flower
+					Toolchain—especially Pansy metadata export for capturing analysis data during gameplay.
+				</p>
+				<p>
+					Play a game, and Nexen tracks which code executes, what memory is accessed, and where
+					jumps go. Export this data to a <code>.pansy</code> file and feed it directly into
+					Peony for better disassembly or Poppy for building modified ROMs.
+				</p>
+			</section>
+
+			<section class="feature-grid">
+				<h2>Features</h2>
+				<div class="features">
+					<div class="feature-card">
+						<span class="feature-icon">🎮</span>
+						<h3>7 Systems</h3>
+						<p>NES, SNES, Game Boy, GBA, PC Engine, Master System, and more.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🌼</span>
+						<h3>Pansy Export</h3>
+						<p>Export symbols, code coverage, and cross-refs to Pansy format.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">🔍</span>
+						<h3>Debugger</h3>
+						<p>Breakpoints, memory viewer, disassembler, trace logger, and more.</p>
+					</div>
+					<div class="feature-card">
+						<span class="feature-icon">📁</span>
+						<h3>Native Formats</h3>
+						<p>.nexen-save, .nexen-movie, .nexen-labels with Mesen compatibility.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="quick-start">
+				<h2>Pansy Integration Workflow</h2>
+				<div class="code-block">
+					<pre><code>1. Load ROM in Nexen
+2. Play through the game (or use debugger)
+3. Nexen tracks:
+   - Code execution coverage (CDL)
+   - Memory read/write patterns
+   - Jump/call targets
+   - User-added labels and comments
+4. File → Export → Pansy Metadata
+5. Use .pansy file with Peony or Poppy</code></pre>
+				</div>
+			</section>
+
+			<section class="toolchain-context">
+				<h2>Connected to the 🌷 Flower Toolchain</h2>
+				<div class="toolchain-flow">
+					<a href="peony.html" class="tool-box">
+						<span class="icon">🌺</span>
+						<h4>Peony</h4>
+						<p>Disassembler</p>
+					</a>
+					<span class="flow-arrow">↔</span>
+					<div class="tool-box current">
+						<span class="icon">🦕</span>
+						<h4>Nexen</h4>
+						<p>Emulator</p>
+					</div>
+					<span class="flow-arrow">↔</span>
+					<a href="pansy.html" class="tool-box">
+						<span class="icon">🌼</span>
+						<h4>Pansy</h4>
+						<p>Metadata</p>
+					</a>
+				</div>
+			</section>
+
+			<section class="project-meta">
+				<h2>Project Info</h2>
+				<dl class="meta-list">
+					<dt>Languages</dt>
+					<dd>C++ (core), C# (.NET 10 UI)</dd>
+					<dt>License</dt>
+					<dd>GPL-3.0</dd>
+					<dt>Based On</dt>
+					<dd>Mesen2 by SourMesen</dd>
+					<dt>Platforms</dt>
+					<dd>Windows, Linux, macOS</dd>
+				</dl>
+			</section>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>
+				© 2026 <a href="https://github.com/TheAnsarya">TheAnsarya</a> ·
+				<a href="../../index.html">Home</a> ·
+				<a href="https://github.com/TheAnsarya/Nexen" target="_blank">GitHub</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="../../assets/vhs-effect-lite.js"></script>
+	<script>VHSEffect.init();</script>
+</body>
+</html>
